@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
-# ROOT_URLCONF = 'bcre.urls'
+ROOT_URLCONF = 'pj3d.urls'
 
 TEMPLATES = [
     {
