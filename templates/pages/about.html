@@ -1,6 +1,4 @@
-{% extends "base.html" %} {% load static %} {% block content %} {% comment %}
-<h1>about</h1>
-{% endcomment %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <section id="showcase-inner" class="py-5 text-white">
   <div class="container">
     <div class="row text-center">
@@ -39,8 +37,7 @@
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt,
           pariatur!
         </p>
-        {% comment %} <img src="{% static 'img/about.jpg' %}" alt="" /> {%
-        endcomment %}
+        <img src="{% static 'img/about.jpg' %}" alt="" />
         <p class="mt-4">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
           esse officia repudiandae ad saepe ex, amet neque quod accusamus rem
@@ -53,7 +50,7 @@
       <div class="col-md-4">
         {% for realtor in mvp_realtors %}
         <div class="card">
-          {% comment %} fix image later {% endcomment %}
+          #fix image later
           <img
             class="card-img-top"
             src="{{realtor.photo.url}}"

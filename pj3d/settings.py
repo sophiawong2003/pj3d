@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'debug_toolbar', 
     'pages.apps.PagesConfig',
-    # 'listings.apps.ListingsConfig',
+    'courses.apps.CoursesConfig',
     # 'realtors.apps.RealtorsConfig',
     # 'accounts.apps.AccountsConfig',
     # 'contacts.apps.ContactsConfig',
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'pj3d.urls'
@@ -82,15 +82,15 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',  #we use 'postgresql' instead of 'sqlite3'
-#         'NAME': 'bcredb',
-#         'USER': 'postgres',
-#         'PASSWORD': '1234',
-#         'HOST': 'localhost'   #object, may need to add port no.
-#     }
-# }
+DATABASES = {
+'default': {
+        'ENGINE': 'django.db.backends.postgresql',  #we use 'postgresql' instead of 'sqlite3'
+        'NAME': 'pj3ddb',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost'   #object, may need to add port no.
+}
+}
 
 
 # Password validation
