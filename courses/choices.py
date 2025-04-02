@@ -1,48 +1,40 @@
-coursecode_choices = {
-    '1':1,
-    '2':2,
-    '3':3,
-    '4':4,
-    '5':5,
+classsize_choices = {
     '6':6,
-    '7':7,
     '8':8,
-    '9':9,
-    '10':10
+    '10':10,
+    '12':12,
+    '14':14,
+    '16':16,
+    '18':18,
+    '20':20,
+    '22':22,
+    '24':24,
 
 }
 
 coursefee_choices = {
-    '1000000': '$1,000,000',
-    '2000000': '$2,000,000',
-    '3000000': '$3,000,000',
-    '4000000': '$4,000,000',
-    '5000000': '$5,000,000',
-    '6000000': '$6,000,000',
-    '7000000': '$7,000,000',
-    '8000000': '$8,000,000',    
-    '9000000': '$9,000,000',
-    '10000000': '$10M+',     }
+    '1000': '$1,000',
+    '2000': '$2,000',
+    '3000': '$3,000',
+    '4000': '$4,000',
+    '5000': '$5,000',
+    '6000': '$6,000',
+    '7000': '$7,000',
+    '8000': '$8,000',    
+    '9000': '$9,000',
+    '10000': '$10K+',     }
 
 
-title_choices = {
-    "Islands" : 'Islands',
-    "Kwai Tsing" : 'Kwai Tsing',
-    "Sai Kung" : 'Sai Kung',
-    "Tsuen Wan" : 'Tsuen Wan',
-    "Tuen Mun " : 'Tuen Mun',
-    "Yuen Long" : 'Yuen Long',
-    "Wong Tai Sin" : 'Wong Tai Sin',
-    "Sha Tin" : 'Sha Tin',
-    "Tai Po" : 'Tai Po',
-    "Kowloon City" : 'Kowloon City', 
-    "Kwun Tong" : 'Kwun Tong', 
-    "Sham Shui Po" : 'Sham Shui Po', 
-    "Yau Tsim Mong" : 'Yau Tsim Mong', 
-    "Central & Western" : 'Central & Western', 
-    "Eastern" : 'Eastern', 
-    "Southern" : 'Southern', 
-    "Wan Chai" : 'Wan Chai',
-    "North" : 'North'
+topic_choices = {
+    "3D 列印基礎" : '3D 列印基礎',
+    "Steam 平台應用" : 'Steam 平台應用',
+    "蒸汽朋克設計" : '蒸汽朋克設計',
+    "高精度列印" : '高精度列印',
+    "逆向設計 " : '逆向設計',
+    "金屬材料應用" : '金屬材料應用',
+    "硬件改造" : '硬件改造',
+    "機械結構" : '機械結構',
+    "醫療應用" : '醫療應用',
+    "場景設計" : '場景設計', 
     
 }

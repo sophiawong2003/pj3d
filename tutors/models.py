@@ -11,6 +11,22 @@ class Tutor(models.Model):
     email = models.CharField(max_length=50)
     is_mvp = models.BooleanField(default=False)
     hire_date = models.DateTimeField(auto_now_add=True)
+    is_published = models.BooleanField(default=True)
+    linkedin = models.URLField(
+        ("LinkedIn Profile"),
+        max_length=200,
+        blank=True
+    )
+    facebook = models.URLField(
+        ("Facebook Profile"),
+        max_length=200,
+        blank=True
+    )
+    instagram = models.URLField(
+        ("Instagram Profile"),
+        max_length=200,
+        blank=True
+    )
 
     def __str__(self):
         return self.name

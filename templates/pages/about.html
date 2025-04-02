@@ -46,25 +46,25 @@
           laborum molestias quia.
         </p>
       </div>
-      {% comment %} {% if mvp_realtors %}
+      {% if mvp_tutors %}
       <div class="col-md-4">
-        {% for realtor in mvp_realtors %}
+        {% for tutor in mvp_tutors %}
         <div class="card">
           #fix image later
           <img
             class="card-img-top"
-            src="{{realtor.photo.url}}"
+            src="{{tutor.photo.url}}"
             alt="Seller of the month"
           />
           <div class="card-body">
             <h5 class="card-title">Seller Of The Month</h5>
-            <h6 class="text-secondary">{{realtor.name}}</h6>
-            <p class="card-text">{{realtor.description}}</p>
+            <h6 class="text-secondary">{{tutor.name}}</h6>
+            <p class="card-text">{{tutor.description}}</p>
           </div>
         </div>
         {% endfor %}
       </div>
-      {% endif %} {% endcomment %}
+      {% endif %}
     </div>
   </div>
 </section>
@@ -77,9 +77,9 @@
     aperiam, unde aliquid at similique!
   </h4>
   <hr />
-  {% comment %} fix listings.html {% endcomment %} {% comment %}
+  {% comment %} fix courses.html {% endcomment %}
   <a
-    href="{% url 'listings' %}"
+    href="{% url 'courses' %}"
     class="btn btn-secondary text-white btn-lg"
     {%
     endcomment
@@ -93,31 +93,122 @@
   <div class="container">
     <h2 class="text-center">Our Team</h2>
     <div class="row text-center">
-      {% comment %} {% if realtors %} {% for realtor in realtors %}
+      {% if tutors %} {% for tutor in tutors %}
       <div class="col-md-4">
         <img
-          src="{{realtor.photo.url}}"
+          src="{{tutor.photo.url}}"
           alt=""
           class="rounded-circle mb-3"
           style="height: 330px; width: 230px"
         />
-        <h4>{{realtor.name}}</h4>
+        <h4>{{tutor.name}}</h4>
         <p class="text-success" style="height: 24px">
-          {% if realtor.is_mvp %}
+          {% if tutor.is_mvp %}
           <i class="fas fa-award text-success mb-3"></i>
-          {% endif %} Realtor
+          {% endif %} Tutor
         </p>
         <hr />
-        <p><i class="fas fa-phone"></i> {{realtor.phone}}</p>
-        <p><i class="fas fa-envelope-open"></i> {{realtor.email}}</p>
+        <p><i class="fas fa-phone"></i> {{tutor.phone}}</p>
+        <p><i class="fas fa-envelope-open"></i> {{tutor.email}}</p>
       </div>
       {% endfor %} {% else %}
       <div class="col-md-12">
         <p>We are hiring !</p>
       </div>
-      {% endif %} {% endcomment %}
+      {% endif %}
     </div>
   </div>
 </section>
 
-{% endblock %}
+{% endblock %} {% comment %}
+
+<section class="team-section py-5">
+  <div class="container">
+    {% if tutors %}
+    <h2 class="text-center mb-5 display-4 fw-bold text-primary">Our Team</h2>
+    <div class="row justify-content-center">
+      {% for tutor in tutors %}
+      <div class="col-lg-4 col-md-6 mb-5">
+        <div
+          class="team-card"
+          data-aos="fade-up"
+          data-aos-delay="{{ forloop.counter|add:50 }}"
+        >
+          <div class="image-container">
+            <img
+              src="{{ tutor.photo.url }}"
+              alt="{{ tutor.name }}"
+              class="img-fluid"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
+            <div class="social-overlay">
+              <div class="social-links">
+                {% if tutor.linkedin %}
+                <a
+                  href="{{ tutor.linkedin }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <i class="fab fa-linkedin"></i>
+                </a>
+                {% endif %} {% if tutor.facebook %}
+                <a
+                  href="{{ tutor.facebook }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  <i class="fab fa-facebook"></i>
+                </a>
+                {% endif %} {% if tutor.instagram %}
+                <a
+                  href="{{ tutor.instagram }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center mt-4">
+            <h3 class="h4 fw-bold mb-2">{{ tutor.name }}</h3>
+            <p class="text-muted mb-3">
+              <i class="fas fa-user-tie me-2"></i>{{ tutor.get_position_display
+              }}
+            </p>
+            <div class="tutor-bio">
+              <p class="text-secondary small">
+                {{ tutor.description|default:_("Professional tutor with
+                extensive experience") }}
+              </p>
+            </div>
+            {% if tutor.is_mvp %}
+            <div class="mt-3">
+              <span class="badge bg-danger">
+                <i class="fas fa-star me-2"></i>MVP
+              </span>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+      <h3>Our Team</h3>
+      <p class="lead">
+        We are currently assembling our team of expert tutors.Check back soon to
+        meet our professionals!
+      </p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endcomment %}

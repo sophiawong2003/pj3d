@@ -1,20 +1,20 @@
 from django.db import models
 from datetime import datetime
 from tutors.models import Tutor
-from . choices import title_choices
+from . choices import topic_choices
 
 # Create your models here.
 class Course(models.Model):
-    tutor = models.ForeignKey(Tutor, on_delete=models.DO_NOTHING, default='')
+    tutor = models.ForeignKey(Tutor, on_delete=models.DO_NOTHING, null=True, blank=True)
     title = models.CharField(max_length=200, default='')
     coursecode = models.CharField(max_length=200, default='')
     # street = models.CharField(max_length=200)
-    topic = models.CharField(max_length=50, choices=title_choices.items(), default='')
+    topic = models.CharField(max_length=50, choices=topic_choices.items(), default='')
     description = models.TextField(blank=True)
     studentreq = models.TextField(blank=True)
-    coursefee = models.IntegerField(default='')
-    classsize = models.IntegerField(default='0.0')
-    durationhr = models.DecimalField(max_digits=2, decimal_places=1, default='')
+    coursefee = models.IntegerField(default=0)
+    classsize = models.IntegerField(default=0)
+    durationhr = models.DecimalField(max_digits=2, decimal_places=1, default=0.0)
     demo = models.URLField(max_length=500, default='https://example.com')
     # clubhouse = models.IntegerField(default=0)
     # sqft = models.IntegerField()

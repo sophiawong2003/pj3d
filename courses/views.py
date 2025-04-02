@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from . models import Course    # . means from same level
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q, F
-from courses.choices import coursefee_choices, coursecode_choices, title_choices
+from courses.choices import coursefee_choices, classsize_choices, topic_choices
 
 # Create your views here.
 def courses(request):

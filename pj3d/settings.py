@@ -85,7 +85,7 @@ TEMPLATES = [
 DATABASES = {
 'default': {
         'ENGINE': 'django.db.backends.postgresql',  #we use 'postgresql' instead of 'sqlite3'
-        'NAME': 'pj3ddb',
+        'NAME': 'pj3Ddb',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost'   #object, may need to add port no.
