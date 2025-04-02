@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'debug_toolbar', 
     'pages.apps.PagesConfig',
     'courses.apps.CoursesConfig',
-    # 'realtors.apps.RealtorsConfig',
+    'tutors.apps.TutorsConfig',
     # 'accounts.apps.AccountsConfig',
     # 'contacts.apps.ContactsConfig',
 ]

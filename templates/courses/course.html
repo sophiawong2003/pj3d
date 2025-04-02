@@ -4,9 +4,7 @@
     <div class="row text-center">
       <div class="col-md-12">
         <h1 class="display-4">{{course.title | title}}</h1>
-        <p class="lead">
-          <i class="fas fa-map-marker"></i> {{course.district}}
-        </p>
+        <p class="lead"><i class="fas fa-map-marker"></i> {{course.topic}}</p>
         {% include 'partials/_alert.html' %}
       </div>
     </div>
@@ -87,25 +85,30 @@
           <div class="col-md-6">
             <ul class="list-group list-group-flush">
               <li class="list-group-item text-secondary">
-                <i class="fas fa-money-bill-alt"></i> Asking Price:
-                <span class="float-right">${{course.price | intcomma}}</span>
+                <i class="fas fa-money-bill-alt"></i> Asking Coursefee:
+                <span class="float-right"
+                  >${{course.coursefee | intcomma}}</span
+                >
               </li>
               <li class="list-group-item text-secondary">
-                <i class="fas fa-bed"></i> Bedrooms:
-                <span class="float-right">{{course.bedrooms}}</span>
+                <i class="fas fa-bed"></i> Class size:
+                <span class="float-right">{{course.classsize}}</span>
               </li>
               <li class="list-group-item text-secondary">
-                <i class="fas fa-bath"></i> Bathrooms:
-                <span class="float-right">{{course.bathrooms}}</span>
+                <i class="fas fa-bath"></i> Duration hrs:
+                <span class="float-right">{{course.durationhr}}</span>
               </li>
+              {% comment %}
               <li class="list-group-item text-secondary">
                 <i class="fas fa-dumbbell"></i> ClubHouse:
                 <span class="float-right">{{course.clubhouse}} </span>
               </li>
+              {% endcomment %}
             </ul>
           </div>
           <div class="col-md-6">
             <ul class="list-group list-group-flush">
+              {% comment %}
               <li class="list-group-item text-secondary">
                 <i class="fas fa-th-large"></i> Square Feet:
                 <span class="float-right">{{course.sqft | intcomma}}</span>
@@ -114,6 +117,7 @@
                 <i class="fas fa-square"></i> Estate Size:
                 <span class="float-right">{{course.estate_size}} </span>
               </li>
+              {% endcomment %}
               <li class="list-group-item text-secondary">
                 <i class="fas fa-calendar"></i> Course Date:
                 <span class="float-right"
@@ -121,8 +125,8 @@
                 >
               </li>
               <li class="list-group-item text-secondary">
-                <i class="fas fa-bed"></i> Realtor:
-                <span class="float-right">{{course.realtor}} </span>
+                <i class="fas fa-bed"></i> Tutor:
+                <span class="float-right">{{course.tutor}} </span>
               </li>
             </ul>
           </div>
@@ -137,12 +141,12 @@
         <div class="card mb-3">
           <img
             class="card-img-top"
-            src="{{course.realtor.photo.url}}"
+            src="{{course.tutor.photo.url}}"
             alt="Seller of the month"
           />
           <div class="card-body">
-            <h5 class="card-title">Property Realtor</h5>
-            <h6 class="text-secondary">{{course.realtor.name}}</h6>
+            <h5 class="card-title">Course Tutor</h5>
+            <h6 class="text-secondary">{{course.tutor.name}}</h6>
           </div>
         </div>
         <button
@@ -179,11 +183,11 @@
           <input type="hidden" name="course_id" value="{{course.id}}" />
           <input
             type="hidden"
-            name="realtor_email"
-            value="{{course.realtor.email}}"
+            name="tutor_email"
+            value="{{course.tutor.email}}"
           />
           <div class="form-group">
-            <label for="property_name" class="col-form-label">Property:</label>
+            <label for="course_name" class="col-form-label">Course:</label>
             <input
               type="text"
               name="course"

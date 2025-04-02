@@ -4,7 +4,7 @@
   <div class="container text-center">
     <div class="home-search p-5">
       <div class="overlay p-5">
-        <h1 class="display-4 mb-4">Property Searching Just Got So Easy</h1>
+        <h1 class="display-4 mb-4">Course Searching Just Got So Easy</h1>
         <p class="lead">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae
           quas, asperiores eveniet vel nostrum magnam voluptatum tempore!
@@ -20,7 +20,7 @@
                   type="text"
                   name="keywords"
                   class="form-control"
-                  placeholder="Keyword (Bathrooms, ClubHouse, etc)"
+                  placeholder="Keyword (Course Topics, Duration hours, etc)"
                 />
               </div>
 
@@ -35,10 +35,10 @@
               </div>
 
               <div class="col-md-4 mb-3">
-                <label class="sr-only">District</label>
-                <select name="district" class="form-control">
-                  <option selected="true" value="">District (All)</option>
-                  {% for key, value in district_choices.items %}
+                <label class="sr-only">Topic</label>
+                <select name="topic" class="form-control">
+                  <option selected="true" value="">Topic (All)</option>
+                  {% for key, value in topic_choices.items %}
                   <option value="{{key}}">{{value}}</option>
                   {% endfor %}
                 </select>
@@ -47,18 +47,18 @@
             <!-- Form Row 2 -->
             <div class="form-row">
               <div class="col-md-6 mb-3">
-                <label class="sr-only">Bedrooms</label>
-                <select name="bedrooms" class="form-control">
-                  <option selected="true" value="">Bedrooms (Any)</option>
-                  {% for key, value in bedroom_choices.items %}
+                <label class="sr-only">classsize</label>
+                <select name="classsize" class="form-control">
+                  <option selected="true" value="">Classsize (Any)</option>
+                  {% for key, value in classsize_choices.items %}
                   <option value="{{key}}">{{value}}</option>
                   {% endfor %}
                 </select>
               </div>
               <div class="col-md-6 mb-3">
-                <select name="price" class="form-control" id="type">
-                  <option selected="true" value="">Max Price (Any)</option>
-                  {% for key, value in price_choices.items %}
+                <select name="coursefee" class="form-control" id="type">
+                  <option selected="true" value="">Max coursefee (Any)</option>
+                  {% for key, value in coursefee_choices.items %}
                   <option value="{{key}}">{{value}}</option>
                   {% endfor %}
                 </select>
@@ -74,65 +74,67 @@
   </div>
 </section>
 
-<!-- Listings -->
-{% comment %}
-<section id="listings" class="py-5">
+<!-- courses -->
+
+<section id="courses" class="py-5">
   <div class="container">
-    <h3 class="text-center mb-3">Latest Listings</h3>
+    <h3 class="text-center mb-3">Latest Courses</h3>
     <div class="row">
-      <!-- Listing 1 -->
-      {% if listings %} {% for listing in listings %}
+      <!-- course 1 -->
+      {% if courses %} {% for course in courses %}
       <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card listing-preview">
+        <div class="card course-preview">
           #fix image later
-          <img class="card-img-top" src="{{listing.photo_main.url}}" alt="" />
+          <img class="card-img-top" src="{{course.photo_main.url}}" alt="" />
           <div class="card-img-overlay">
             <h2>
               <span class="badge badge-secondary text-white"
-                >${{listing.price | intcomma}}</span
+                >${{course.coursefee | intcomma}}</span
               >
             </h2>
           </div>
           <div class="card-body">
-            <div class="listing-heading text-center">
-              <h4 class="text-primary">{{listing.title}}</h4>
+            <div class="course-heading text-center">
+              <h4 class="text-primary">{{course.title}}</h4>
               <p>
                 <i class="fas fa-map-marker text-secondary"></i>
-                {{listing.district}}
+                {{course.topic}}
               </p>
             </div>
             <hr />
+            {% comment %}
             <div class="row py-2 text-secondary">
               <div class="col-6">
-                <i class="fas fa-th-large"></i> Sqft: {{listing.sqft| intcomma}}
+                <i class="fas fa-th-large"></i> Sqft: {{course.sqft| intcomma}}
               </div>
               <div class="col-6">
-                <i class="fas fa-dumbbell"></i> ClubHouse: {{listing.clubhouse}}
+                <i class="fas fa-dumbbell"></i> ClubHouse: {{course.clubhouse}}
               </div>
             </div>
+            {% endcomment %}
             <div class="row py-2 text-secondary">
               <div class="col-6">
-                <i class="fas fa-bed"></i> Bedrooms: {{listing.bedrooms}}
+                <i class="fas fa-bed"></i> Class size: {{course.classsize}}
               </div>
               <div class="col-6">
-                <i class="fas fa-bath"></i> Bathrooms: {{listing.bathrooms}}
+                <i class="fas fa-bath"></i> Duration hr: {{course.durationhr}}
               </div>
             </div>
             <hr />
             <div class="row py-2 text-secondary">
               <div class="col-12">
-                <i class="fas fa-user"></i> {{listing.realtor}}
+                <i class="fas fa-user"></i> {{course.tutor}}
               </div>
             </div>
             <div class="row text-secondary pb-2">
               <div class="col-12">
-                <i class="fas fa-clock"></i> {{listing.list_date | timesince}}
+                <i class="fas fa-clock"></i> {{course.list_date | timesince}}
               </div>
             </div>
             <hr />
-            # fix listing.html later
+            # fix course.html later
             <a
-              href="{% url 'listing' listing.id %}"
+              href="{% url 'course' course.id %}"
               class="btn btn-primary btn-block"
               >More Info</a
             >
@@ -141,13 +143,12 @@
       </div>
       {% endfor %} {% else %}
       <div class="col-md-12">
-        <p>No Listing Available</p>
+        <p>No Course Available</p>
       </div>
       {% endif %}
     </div>
   </div>
 </section>
-{% endcomment %}
 
 <section id="services" class="py-5 bg-secondary text-white">
   <div class="container">

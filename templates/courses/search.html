@@ -12,7 +12,7 @@
                 type="text"
                 name="keywords"
                 class="form-control"
-                placeholder="Keyword (Bathrooms, ClubHouse, etc)"
+                placeholder="Keyword (Topic, Coursecode, etc)"
                 value="{{values.keywords}}"
               />
             </div>
@@ -29,12 +29,12 @@
             </div>
 
             <div class="col-md-4 mb-3">
-              <label class="sr-only">District</label>
-              <select name="district" class="form-control">
-                <option {% if not values.district %} selected="true" {% endif %} value=""> Districts (All)</option>
-                {% for key, value in district_choices.items %}
+              <label class="sr-only">Topic</label>
+              <select name="topic" class="form-control">
+                <option {% if not values.topic %} selected="true" {% endif %} value=""> Topics (All)</option>
+                {% for key, value in topic_choices.items %}
                 <option 
-                  {% if key == values.district %} selected {% endif %} value="{{key}}">{{value}}</option>
+                  {% if key == values.topic %} selected {% endif %} value="{{key}}">{{value}}</option>
                 {% endfor %}
               </select>
             </div>
@@ -42,23 +42,23 @@
           <!-- Form Row 2 -->
           <div class="form-row">
             <div class="col-md-6 mb-3">
-              <label class="sr-only">Bedrooms</label>
-              <select name="bedrooms" class="form-control">
-                <option {% if not values.bedrooms %} selected="true" {% endif %} value="">
+              <label class="sr-only">Durations</label>
+              <select name="durations" class="form-control">
+                <option {% if not values.durations %} selected="true" {% endif %} value="">
                   Bedrooms (Any)
                 </option>
-                {% for key, value in bedroom_choices.items %}
-                <option {% if values.bedrooms == key %} selected {% endif %} value="{{key}}">{{value}}</option>
+                {% for key, value in duration_choices.items %}
+                <option {% if values.durations == key %} selected {% endif %} value="{{key}}">{{value}}</option>
                 {% endfor %}
               </select>
             </div>
             <div class="col-md-6 mb-3">
-              <select name="price" class="form-control">
-                <option {% if not values.price %} selected="true" {% endif %} value="">
-                  Max Price (All)
+              <select name="coursefee" class="form-control">
+                <option {% if not values.coursefee %} selected="true" {% endif %} value="">
+                  Max Coursefee (All)
                 </option>
-                {% for key, value in price_choices.items %}
-                <option {% if values.price == key %} selected {% endif %} value="{{key}}">{{value}}</option>
+                {% for key, value in coursefee_choices.items %}
+                <option {% if values.coursefee == key %} selected {% endif %} value="{{key}}">{{value}}</option>
                 {% endfor %}
               </select>
             </div>
@@ -101,30 +101,30 @@
           <img class="card-img-top" src="{{course.photo_main.url}}" alt="" />
           <div class="card-img-overlay">
             <h2>
-              <span class="badge badge-secondary text-white">${{course.price | intcomma}}</span>
+              <span class="badge badge-secondary text-white">${{course.coursefee | intcomma}}</span>
             </h2>
           </div>
           <div class="card-body">
             <div class="course-heading text-center">
               <h4 class="text-primary">{{course.title}}</h4>
               <p>
-                <i class="fas fa-map-marker text-secondary"></i> {{course.district}}
+                <i class="fas fa-map-marker text-secondary"></i> {{course.title}}
               </p>
             </div>
             <hr />
-            <div class="row py-2 text-secondary">
+            {% comment %} <div class="row py-2 text-secondary">
               <div class="col-6">
                 <i class="fas fa-th-large"></i> Sqft: {{course.sqft | intcomma}}
               </div>
               <div class="col-6"><i class="fas fa-car"></i> ClubHouse: {{course.clubhouse}}</div>
-            </div>
+            </div> {% endcomment %}
             <div class="row py-2 text-secondary">
-              <div class="col-6"><i class="fas fa-bed"></i> Bedrooms: {{course.bedrooms}}</div>
-              <div class="col-6"><i class="fas fa-bath"></i> Bathrooms: {{course.bathrooms}}</div>
+              <div class="col-6"><i class="fas fa-bed"></i> Class size: {{course.classsize}}</div>
+              {% comment %} <div class="col-6"><i class="fas fa-bath"></i> Bathrooms: {{course.bathrooms}}</div> {% endcomment %}
             </div>
             <hr />
             <div class="row py-2 text-secondary">
-              <div class="col-12"><i class="fas fa-user"></i> {{course.realtor}}</div>
+              <div class="col-12"><i class="fas fa-user"></i> {{course.tutor}}</div>
             </div>
             <div class="row text-secondary pb-2">
               <div class="col-12"><i class="fas fa-clock"></i> {{course.list_date | timesince}}</div>
