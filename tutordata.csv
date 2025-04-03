@@ -1,0 +1,7 @@
+tutordata
+name,photo,description,phone,email,hire_date
+陳志豪,/Users/sophiawong/Desktop/DJproject/media/photos/2025/04/02/生成_Django_模型数据6.png,擁有多年3D列印教學經驗，擅長各種建模軟件與列印技術。,+852 12345678,chenzhihao@example.com,1/4/2025
+李婉婷,/Users/sophiawong/Desktop/DJproject/media/photos/2025/04/02/生成_Django_模型数据3.png,曾參與多個Steam遊戲模型開發項目，在Steam平台運營方面有獨到見解。,+852 23456789,liwanting@example.com,15/3/2025
+黃耀祖,/Users/sophiawong/Desktop/DJproject/media/photos/2025/04/02/生成_Django_模型数据5.png,精通逆向工程與金屬3D列印技術，有豐富的工業項目經驗。,+852 34567890,huangyaozu@example.com,20/2/2025
+張慧琳,media/photos/2025/04/02/WhatsApp_Image_2025-04-02_at_11.52.46.jpeg,擅長生物相容性列印與醫療級材料應用，有相關科研背景。,+852 45678901,zhanghuilin@example.com,25/1/2025
+吳俊傑,media/photos/2025/04/02/生成_Django_模型数据6.png,在可動機械模型設計領域有出色表現，教學風格生動有趣。,+852 56789012,wujunjie@example.com,30/12/2024
