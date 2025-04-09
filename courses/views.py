@@ -15,7 +15,7 @@ def courses(request):
     return render(request, 'courses/courses.html', context) #pass address of context to template engine
 
 def course(request, course_id):
-    course = get_object_or_404(course, pk=course_id)
+    course = get_object_or_404(Course, pk=course_id)
     context = {'course' : course}
     return render(request, 'courses/course.html', context)
 
@@ -25,10 +25,10 @@ def search(request):
         keywords = request.GET['keywords']
         if keywords:
             queryset_list = queryset_list.filter(description__icontains=keywords)
-    # if 'title' in request.GET:
-    #     title = request.GET['title']
-    #     if title:
-    #         queryset_list = queryset_list.filter(title__icontains=title)
+    if 'title' in request.GET:
+        title = request.GET['title']
+        if title:
+            queryset_list = queryset_list.filter(title__icontains=title)
     if 'topic' in request.GET:
         topic = request.GET['topic']
         if topic:
@@ -49,8 +49,8 @@ def search(request):
         del values["page"]
     context = {
         'coursefee_choices' : coursefee_choices,
-        'title_choices' : title_choices,
-        'coursecode_choices' : coursecode_choices,
+        'topic_choices' : topic_choices,
+        'classsize_choices' : classsize_choices,
         'courses' : paged_courses,
         'values' : values
     }

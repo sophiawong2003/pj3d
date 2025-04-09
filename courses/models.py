@@ -17,7 +17,7 @@ class Course(models.Model):
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     demo = models.URLField(max_length=500, default='https://example.com')
     is_published = models.BooleanField(default=True)
-    photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
+    photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)

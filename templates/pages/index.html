@@ -78,14 +78,19 @@
 
 <section id="courses" class="py-5">
   <div class="container">
-    <h3 class="text-center mb-3">Latest Courses</h3>
+    <h3 class="text-center mb-3">最新課程</h3>
     <div class="row">
       <!-- course 1 -->
       {% if courses %} {% for course in courses %}
-      <div class="col-md-6 col-lg-4 mb-4">
+      <div class="col-md-4 mb-4">
         <div class="card course-preview">
-          #fix image later
-          <img class="card-img-top" src="{{course.photo_main.url}}" alt="" />
+          {% comment %} #fix image later {% endcomment %}
+          <img
+            class="card-img-top img-fluid"
+            style="height: 200px; object-fit: cover"
+            src="{{course.photo_main.url}}"
+            alt=""
+          />
           <div class="card-img-overlay">
             <h2>
               <span class="badge badge-secondary text-white"
@@ -95,7 +100,7 @@
           </div>
           <div class="card-body">
             <div class="course-heading text-center">
-              <h4 class="text-primary">{{course.title}}</h4>
+              <h4 class="text-primary course-title">{{course.title}}</h4>
               <p>
                 <i class="fas fa-map-marker text-secondary"></i>
                 {{course.topic}}
@@ -114,29 +119,31 @@
             {% endcomment %}
             <div class="row py-2 text-secondary">
               <div class="col-6">
-                <i class="fas fa-bed"></i> Class size: {{course.classsize}}
+                <i class="fas fa-bed"></i> 班級人數: {{course.classsize}}
               </div>
               <div class="col-6">
-                <i class="fas fa-bath"></i> Duration hr: {{course.durationhr}}
+                <i class="fas fa-bath"></i> 時長 (小時): {{course.durationhr}}
               </div>
             </div>
             <hr />
             <div class="row py-2 text-secondary">
               <div class="col-12">
-                <i class="fas fa-user"></i> {{course.tutor}}
+                <i class="fas fa-user"></i> 導師: {{course.tutor}}
               </div>
             </div>
             <div class="row text-secondary pb-2">
               <div class="col-12">
-                <i class="fas fa-clock"></i> {{course.list_date | timesince}}
+                <i class="fas fa-clock"></i> 發佈日期:
+                {{course.list_date|timesince}}
               </div>
             </div>
             <hr />
-            # fix course.html later
+
+            {% comment %} # fix course.html later {% endcomment %}
             <a
               href="{% url 'course' course.id %}"
               class="btn btn-primary btn-block"
-              >More Info</a
+              >更多資訊</a
             >
           </div>
         </div>
