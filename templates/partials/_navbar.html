@@ -25,7 +25,7 @@
           <a class="nav-link" href="{% url 'courses' %}">Featured Courses</a> 
         </li>
       </ul>
-      {% comment %} <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
         <li {% if 'dashboard' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
           <a href="{% url 'dashboard' %}" class="nav-link">Welcome {{user.username}}(dashboard)</a>
@@ -44,16 +44,16 @@
         {% else %}
         <li {% if 'register' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
           <a class="nav-link" href="{% url 'register' %}">
-            <i class="fas fa-user-plus"></i> Register</a
+            <i class="fas fa-user-plus"></i> 註冊</a
           >
         </li>
         <li {% if 'login' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
           <a class="nav-link" href="{% url 'login' %}">
             <i class="fas fa-sign-in-alt"></i>
-            Login</a
+            登入</a
           >
         </li>
-         {% endif %}{% endcomment %}
+         {% endif %}
       </ul> 
     </div>
   </div>

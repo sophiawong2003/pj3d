@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'courses.apps.CoursesConfig',
     'tutors.apps.TutorsConfig',
-    # 'accounts.apps.AccountsConfig',
-    # 'contacts.apps.ContactsConfig',
+    'accounts.apps.AccountsConfig',
+    'contacts.apps.ContactsConfig',
 ]
 
 MIDDLEWARE = [
@@ -145,13 +145,13 @@ INTERNAL_IPS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# MESSAGE_TAGS ={
-#     messages.ERROR :'danger',
-#     messages.SUCCESS : 'success'
-# }
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'sophiawong2003@gmail.com'
-# EMAIL_HOST_PASSWORD = 'nuxrugdaqwgfmggz'
-# EMAIL_USE_TLS = True
+MESSAGE_TAGS ={
+    messages.ERROR :'danger',
+    messages.SUCCESS : 'success'
+}
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sophiawong2003@gmail.com'
+EMAIL_HOST_PASSWORD = 'nuxrugdaqwgfmggz'
+EMAIL_USE_TLS = True

@@ -5,7 +5,7 @@
       <div class="col-md-12">
         <h1 class="display-4">{{course.title | title}}</h1>
         <p class="lead"><i class="fas fa-map-marker"></i> {{course.topic}}</p>
-        {% comment %} {% include 'partials/_alert.html' %} {% endcomment %}
+        {% include 'partials/_alert.html' %}
       </div>
     </div>
   </div>
@@ -149,7 +149,7 @@
             <h6 class="text-secondary">{{course.tutor.name}}</h6>
           </div>
         </div>
-        {% comment %}
+
         <button
           class="btn-primary btn-block btn-lg"
           data-toggle="modal"
@@ -157,12 +157,11 @@
         >
           Make An Inquiry
         </button>
-        {% endcomment %}
       </div>
     </div>
   </div>
 </section>
-{% comment %}
+
 <!-- Inquiry Modal -->
 <div class="modal fade" id="inquiryModal" role="dialog">
   <div class="modal-dialog">
@@ -204,7 +203,7 @@
             <input
               type="text"
               name="name"
-              value="{{user.first_name}}{{user.last_name}}"
+              value="{{ user.first_name }} {{ user.last_name }}"
               class="form-control"
               readonly
             />
@@ -245,4 +244,4 @@
     </div>
   </div>
 </div>
-{% endcomment %} {% endblock %}
+{% endblock %}
