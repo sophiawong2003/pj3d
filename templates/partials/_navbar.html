@@ -21,8 +21,10 @@
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
         <li {% if 'courses' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}> 
-          
           <a class="nav-link" href="{% url 'courses' %}">Featured Courses</a> 
+        </li>
+        <li {% if 'experience' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+          <a class="nav-link" href="{% url 'experience' %}">Experience</a>
         </li>
       </ul>
       {% comment %} <ul class="navbar-nav ml-auto">

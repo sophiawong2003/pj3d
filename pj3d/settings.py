@@ -41,8 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'debug_toolbar', 
     'pages.apps.PagesConfig',
+    'experience.apps.ExperienceConfig',
     'courses.apps.CoursesConfig',
     'tutors.apps.TutorsConfig',
+    'experience.apps.ExperienceConfig',
     # 'accounts.apps.AccountsConfig',
     # 'contacts.apps.ContactsConfig',
 ]
