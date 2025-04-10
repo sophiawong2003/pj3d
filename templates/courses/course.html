@@ -31,122 +31,218 @@
 <!-- course -->
 <section id="course" class="py-4">
   <div class="container">
-    <a href="{% url 'courses' %}" class="btn btn-light mb-4">Back To Courses</a>
+    <a href="{% url 'courses' %}" class="btn btn-light mb-4 shadow-sm">
+      <i class="fas fa-arrow-left mr-2"></i> Back To Courses
+    </a>
     <div class="row">
       <div class="col-md-9">
         <!--Home main image-->
-        <img
-          src="{{course.photo_main.url}}"
-          alt=""
-          class="img-main img-fluid mb-3"
-        />
+        <div class="position-relative mb-4">
+          <img
+            src="{{course.photo_main.url}}"
+            alt="{{course.title}}"
+            class="img-main img-fluid rounded shadow-sm"
+            style="width: 100%; height: 400px; object-fit: cover;"
+          />
+          <div class="position-absolute" style="top: 20px; right: 20px;">
+            <span class="text-white bg-primary p-2 rounded">
+              ${{course.coursefee | intcomma}}
+            </span>
+          </div>
+        </div>
         <!-- Thumbnails -->
-        <div class="row mb-5 thumbs">
-          {% if course.photo_1 %}
-          <div class="col-md-2">
-            <a href="{{course.photo_1.url}}" data-lightbox="home-images">
-              <img src="{{course.photo_1.url}}" alt="" class="img-fluid" />
-            </a>
+        <div class="card shadow-sm mb-5 thumbnail-gallery">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="fas fa-camera-retro mr-2"></i>課程相片集</h5>
           </div>
-          {% endif %} {% if course.photo_2 %}
-          <div class="col-md-2">
-            <a href="{{course.photo_2.url}}" data-lightbox="home-images">
-              <img src="{{course.photo_2.url}}" alt="" class="img-fluid" />
-            </a>
+          <div class="card-body p-0">
+            <div class="thumbnail-grid">
+              {% if course.photo_1 %}
+              <div class="col-md-2 col-4 mb-3">
+                <a href="{{course.photo_1.url}}" data-lightbox="course-images" class="thumbnail-link">
+                  <img 
+                    src="{{course.photo_1.url}}" 
+                    alt="{{course.title}} photo 1" 
+                    class="img-fluid rounded shadow-sm thumbnail-img" 
+                    style="height: 100px; object-fit: cover;"
+                  />
+                </a>
+              </div>
+              {% endif %} 
+              {% if course.photo_2 %}
+              <div class="col-md-2 col-4 mb-3">
+                <a href="{{course.photo_2.url}}" data-lightbox="course-images" class="thumbnail-link">
+                  <img 
+                    src="{{course.photo_2.url}}" 
+                    alt="{{course.title}} photo 2" 
+                    class="img-fluid rounded shadow-sm thumbnail-img" 
+                    style="height: 100px; object-fit: cover;"
+                  />
+                </a>
+              </div>
+              {% endif %} 
+              {% if course.photo_3 %}
+              <div class="col-md-2 col-4 mb-3">
+                <a href="{{course.photo_3.url}}" data-lightbox="course-images" class="thumbnail-link">
+                  <img 
+                    src="{{course.photo_3.url}}" 
+                    alt="{{course.title}} photo 3" 
+                    class="img-fluid rounded shadow-sm thumbnail-img" 
+                    style="height: 100px; object-fit: cover;"
+                  />
+                </a>
+              </div>
+              {% endif %} 
+              {% if course.photo_4 %}
+              <div class="col-md-2 col-4 mb-3">
+                <a href="{{course.photo_4.url}}" data-lightbox="course-images" class="thumbnail-link">
+                  <img 
+                    src="{{course.photo_4.url}}" 
+                    alt="{{course.title}} photo 4" 
+                    class="img-fluid rounded shadow-sm thumbnail-img" 
+                    style="height: 100px; object-fit: cover;"
+                  />
+                </a>
+              </div>
+              {% endif %} 
+              {% if course.photo_5 %}
+              <div class="col-md-2 col-4 mb-3">
+                <a href="{{course.photo_5.url}}" data-lightbox="course-images" class="thumbnail-link">
+                  <img 
+                    src="{{course.photo_5.url}}" 
+                    alt="{{course.title}} photo 5" 
+                    class="img-fluid rounded shadow-sm thumbnail-img" 
+                    style="height: 100px; object-fit: cover;"
+                  />
+                </a>
+              </div>
+              {% endif %} 
+              {% if course.photo_6 %}
+              <div class="col-md-2 col-4 mb-3">
+                <a href="{{course.photo_6.url}}" data-lightbox="course-images" class="thumbnail-link">
+                  <img 
+                    src="{{course.photo_6.url}}" 
+                    alt="{{course.title}} photo 6" 
+                    class="img-fluid rounded shadow-sm thumbnail-img" 
+                    style="height: 100px; object-fit: cover;"
+                  />
+                </a>
+              </div>
+              {% endif %}
+              
+              {% if not course.photo_1 and not course.photo_2 and not course.photo_3 and not course.photo_4 and not course.photo_5 and not course.photo_6 %}
+              <div class="col-12 text-center py-3">
+                <p class="text-muted mb-0">暫無更多課程相片</p>
+              </div>
+              {% endif %}
+            </div>
           </div>
-          {% endif %} {% if course.photo_3 %}
-          <div class="col-md-2">
-            <a href="{{course.photo_3.url}}" data-lightbox="home-images">
-              <img src="{{course.photo_3.url}}" alt="" class="img-fluid" />
-            </a>
-          </div>
-          {% endif %} {% if course.photo_4 %}
-          <div class="col-md-2">
-            <a href="{{course.photo_4.url}}" data-lightbox="home-images">
-              <img src="{{course.photo_4.url}}" alt="" class="img-fluid" />
-            </a>
-          </div>
-          {% endif %} {% if course.photo_5 %}
-          <div class="col-md-2">
-            <a href="{{course.photo_5.url}}" data-lightbox="home-images">
-              <img src="{{course.photo_5.url}}" alt="" class="img-fluid" />
-            </a>
-          </div>
-          {% endif %} {% if course.photo_6 %}
-          <div class="col-md-2">
-            <a href="{{course.photo_6.url}}" data-lightbox="home-images">
-              <img src="{{course.photo_6.url}}" alt="" class="img-fluid" />
-            </a>
-          </div>
-          {% endif %}
         </div>
         <!-- Fields -->
         <div class="row mb-5 fields">
           <div class="col-md-6">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item text-secondary">
-                <i class="fas fa-money-bill-alt"></i> 課程費用:
-                <span class="float-right"
-                  >${{course.coursefee | intcomma}}</span
-                >
-              </li>
-              <li class="list-group-item text-secondary">
-                <i class="fas fa-bed"></i> 班級人數:
-                <span class="float-right">{{course.classsize}}</span>
-              </li>
-              <li class="list-group-item text-secondary">
-                <i class="fas fa-bath"></i> 時長(小時):
-                <span class="float-right">{{course.durationhr}}</span>
-              </li>
-              {% comment %}
-              <li class="list-group-item text-secondary">
-                <i class="fas fa-dumbbell"></i> ClubHouse:
-                <span class="float-right">{{course.clubhouse}} </span>
-              </li>
-              {% endcomment %}
-            </ul>
+            <div class="card shadow-sm">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">課程詳情</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-secondary">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <i class="fas fa-money-bill-alt mr-2 text-primary"></i> 課程費用:
+                    </div>
+                    <span>
+                      ${{course.coursefee | intcomma}}</span
+                    >
+                  </div>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <i class="fas fa-users mr-2 text-primary"></i> 班級人數:
+                    </div>
+                    <span>{{course.classsize}}</span>
+                  </div>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <i class="fas fa-clock mr-2 text-primary"></i> 時長(小時):
+                    </div>
+                    <span>{{course.durationhr}}</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="col-md-6">
-            <ul class="list-group list-group-flush">
-              {% comment %}
-              <li class="list-group-item text-secondary">
-                <i class="fas fa-th-large"></i> Square Feet:
-                <span class="float-right">{{course.sqft | intcomma}}</span>
-              </li>
-              <li class="list-group-item text-secondary">
-                <i class="fas fa-square"></i> Estate Size:
-                <span class="float-right">{{course.estate_size}} </span>
-              </li>
-              {% endcomment %}
-              <li class="list-group-item text-secondary">
-                <i class="fas fa-calendar"></i> 發佈日期:
-                <span class="float-right"
-                  >{{course.list_date | timesince}}</span
-                >
-              </li>
-              <li class="list-group-item text-secondary">
-                <i class="fas fa-bed"></i> 導師:
-                <span class="float-right">{{course.tutor}} </span>
-              </li>
-            </ul>
+            <div class="card shadow-sm">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">其他資訊</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-secondary">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <i class="fas fa-calendar mr-2 text-primary"></i> 發佈日期:
+                    </div>
+                    <span>{{course.list_date | timesince}}</span>
+                  </div>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <i class="fas fa-user mr-2 text-primary"></i> 導師:
+                    </div>
+                    <span>{{course.tutor}}</span>
+                  </div>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <i class="fas fa-tags mr-2 text-primary"></i> 主題:
+                    </div>
+                    <span>{{course.topic}}</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
         <!-- Description -->
         <div class="row mb-5">
-          <div class="col-md-12">{{course.description}}</div>
+          <div class="col-md-12">
+            <div class="card shadow-sm">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">課程描述</h5>
+              </div>
+              <div class="card-body">
+                {{course.description}}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card mb-3">
+        <div class="card mb-3 shadow-sm hover-effect">
           <img
             class="card-img-top"
             src="{{course.tutor.photo.url}}"
-            alt="Seller of the month"
+            alt="{{course.tutor.name}}"
+            style="height: 250px; object-fit: cover;"
           />
-          <div class="card-body">
-            <h5 class="card-title">課程導師</h5>
-            <h6 class="text-secondary">{{course.tutor.name}}</h6>
+          <div class="card-body text-center">
+            <h5 class="card-title text-primary">課程導師</h5>
+            <h6 class="text-secondary mb-3">{{course.tutor.name}}</h6>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="btn btn-outline-primary btn-sm mr-2">
+                <i class="fas fa-envelope"></i> 聯絡
+              </a>
+              <a href="#" class="btn btn-outline-secondary btn-sm">
+                <i class="fas fa-info-circle"></i> 詳情
+              </a>
+            </div>
           </div>
         </div>
         {% comment %}

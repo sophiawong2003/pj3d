@@ -15,26 +15,82 @@ img {
   margin-right: 0.4rem; }
 
 .course-preview {
-  height: 500px; /* Set a fixed height for the card */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: all 0.3s ease;
+  border: none;
+  overflow: hidden;
+}
+
+.hover-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
 .course-title {
-  font-size: 1.25rem; /* Set a fixed large font size */
-  font-weight: bold; /* Optional: Make the title bold */
-  line-height: 1.4; /* Adjust line height for better readability */
-  overflow: hidden; /* Hide overflowing text */
-  display: -webkit-box; /* Use a flexbox-like layout for text */
-  -webkit-line-clamp: 2; /* Limit to 2 lines */
-  line-clamp: 2; /* Standard property for compatibility */
-  -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
 }
+
 .card-img-top {
-  height: 200px; /* Set a fixed height for the image */
-  object-fit: cover; /* Ensure the image fits within the dimensions */
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
+
+.position-relative:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.price-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.card:hover .price-badge {
+  transform: scale(1.1);
+}
+
+.card-body {
+  padding: 1.25rem;
+  background-color: #fff;
+}
+
+.card hr {
+  margin: 0.75rem 0;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  transition: all 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
 
 #showcase {
   background-image: url(../img/showcase.jpg);
@@ -55,65 +111,139 @@ img {
     width: 100%;
     background: rgba(51, 51, 51, 0.8); }
 
-#services {
-  background: url(../img/building.jpg) no-repeat top center/cover fixed;
-  min-height: 300px;
+.thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  margin: 2rem auto;
+  max-width: 1440px;
   position: relative;
-  overflow: hidden; }
-  #services::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-height: 100%;
-    width: 100%;
-    background: rgba(32, 134, 107, 0.8); }
+}
 
-#showcase-inner {
-  background: url(../img/building.jpg) no-repeat top center/cover fixed;
+.thumbnail-link {
   position: relative;
+  display: block;
+  border-radius: 12px;
   overflow: hidden;
-  min-height: 200px; }
-  #showcase-inner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-height: 100%;
-    width: 100%;
-    background: rgba(32, 134, 107, 0.8); }
-  #showcase-inner.showcase-search {
-    min-height: 270px; }
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s ease;
+  aspect-ratio: 1;
+  background: linear-gradient(45deg, #f8f9fa, #ffffff);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+              0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
 
-#work {
-  padding: 6rem 0; }
+.thumbnail-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+             rgba(0, 0, 0, 0) 60%, 
+             rgba(0, 0, 0, 0.4) 100%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
-.listing-preview a {
-  position: relative; }
+.thumbnail-link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15),
+              0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+}
 
-@media (max-width: 991px) {
-  #showcase {
-    padding-top: 4rem; }
-    #showcase h1 {
-      font-size: 40px; }
-  .hide-md-down {
-    display: none; } }
+.thumbnail-link:hover::before {
+  opacity: 1;
+}
+
+.thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.3s ease;
+  filter: saturate(0.95) brightness(0.98);
+}
+
+.thumbnail-link:hover .thumbnail-img {
+  transform: scale(1.05);
+  filter: saturate(1.1) brightness(1.02);
+}
+
+.thumbnail-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  color: white;
+  z-index: 2;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, 
+              opacity 0.2s ease;
+}
+
+.thumbnail-link:hover .thumbnail-caption {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.caption-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.caption-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .thumbnail-grid {
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+  
+  .thumbnail-link {
+    border-radius: 8px;
+  }
+}
 
 @media (max-width: 768px) {
-  #showcase {
-    padding-top: 3rem; }
-    #showcase h1 {
-      font-size: 40px; }
-    #showcase p {
-      display: none; }
-  #top-bar {
-    text-align: center; }
-    #top-bar .social {
-      text-align: center !important; } }
+  .thumbnail-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+  
+  .thumbnail-caption {
+    padding: 1rem;
+  }
+  
+  .caption-title {
+    font-size: 1rem;
+  }
+}
 
-@media (max-width: 576px) {
-  #showcase h1 {
-    font-size: 30px; }
-  #showcase-inner h1 {
-    font-size: 40px; } }
+@media (hover: none) {
+  .thumbnail-link:hover {
+    transform: none;
+    box-shadow: initial;
+  }
+  
+  .thumbnail-img {
+    filter: none;
+  }
+}
 
+.thumbnail-link:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
