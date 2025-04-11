@@ -39,7 +39,7 @@ class TimelineEvent(models.Model):
     def get_icon(self):
         """Returns the appropriate Font Awesome icon class based on event type"""
         icon_mapping = {
-            'exhibition': 'fas fa-museum',
+            'exhibition': 'fas fa-camera-retro',
             'competition': 'fas fa-trophy',
             'workshop': 'fas fa-chalkboard-teacher'
         }

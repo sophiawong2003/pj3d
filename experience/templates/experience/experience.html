@@ -15,11 +15,11 @@
                 <div class="timeline__event__date-text">
                     {{ event.event_date|date:"d-m-Y" }}
                 </div>
-            </div>
+            </div>  
             <div class="timeline__event__content">
-                                {% if event.main_photo %}
+                {% comment %} {% if event.main_photo %}
                 <img src="{{ event.main_photo.url }}" alt="{{ event.title }}" class="timeline__event__date-img">
-                {% endif %}
+                {% endif %}  {% endcomment %}
                 <div class="timeline__event__title">{{ event.title }}</div>
                 <div class="timeline__event__description">
                     {{ event.description }}

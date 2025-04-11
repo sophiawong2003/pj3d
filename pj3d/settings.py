@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os                  #added on 25Feb2025
 from pathlib import Path
 from django.contrib.messages import constants as messages
-from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -152,16 +152,15 @@ INTERNAL_IPS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-MESSAGE_TAGS ={
-    messages.ERROR :'danger',
-    messages.SUCCESS : 'success'
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success'
 }
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# Email Settings - Outlook SMTP
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp-mail.outlook.com'  # Outlook SMTP server
+EMAIL_PORT = 587  # TLS port for Outlook
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'bustyle@outlook.com'  # Your Outlook email address
+EMAIL_HOST_PASSWORD = 'FGTDWAGLET3JGULF726Y7GVRM'  # Your Outlook password/app password
