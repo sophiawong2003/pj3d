@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'experience.apps.ExperienceConfig',
     'courses.apps.CoursesConfig',
     'tutors.apps.TutorsConfig',
-    'experience.apps.ExperienceConfig',
     # 'accounts.apps.AccountsConfig',
     # 'contacts.apps.ContactsConfig',
 ]

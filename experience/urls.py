@@ -4,5 +4,6 @@ from . import views
 app_name = 'experience'
 
 urlpatterns = [
-    path('', views.experience_timeline, name='experience'),
+    path('', views.experience_view, name='experience'),
+    path('videos/', views.making_video, name='experience_videos'),
 ]

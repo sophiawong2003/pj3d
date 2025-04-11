@@ -2,25 +2,27 @@
 {% load static %}
 
 {% block content %}
-<section class="py-5">
-    <div class="container">
-        <h1 class="mb-5 text-center">Project Development Timeline</h1>
-        <div class="timeline-vertical">
-            {% for event in events %}
-            <div class="timeline-item {% cycle 'left' 'right' %}">
-                <div class="timeline-content">
-                    <h3 class="mb-3">{{ event.title }}</h3>
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-primary">{{ event.event_date|date:"F Y" }}</span>
-                        {% if event.image %}
-                        <img src="{{ event.image.url }}" alt="{{ event.title }}" class="img-fluid rounded" style="max-width: 200px;">
-                        {% endif %}
-                    </div>
-                    <p class="lead">{{ event.description }}</p>
+<div class="container">
+    <h2 class="text-center mb-5">A clean timeline design, with animated links</h2>
+    <div class="timeline">
+        {% for event in timeline_events %}
+        <div class="timeline__event animated fadeInUp timeline__event--{{ event.event_type }}">
+            {% comment %} <div class="timeline__event__icon">
+                <i class="{{ event.icon_class }}"></i>
+            </div> {% endcomment %}
+            <div class="timeline__event__date">
+                {{ event.event_date|date:"d-m-Y" }}
+            </div>
+            <div class="timeline__event__content">
+                <div class="timeline__event__title">{{ event.title }}</div>
+                <div class="timeline__event__description">
+                    {{ event.description }}
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
-</section>
+</div>
 {% endblock %}
+
+
