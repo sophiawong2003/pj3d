@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'debug_toolbar', 
     'pages.apps.PagesConfig',
+    'experience.apps.ExperienceConfig',
     'courses.apps.CoursesConfig',
     'tutors.apps.TutorsConfig',
     'accounts.apps.AccountsConfig',
@@ -86,10 +87,15 @@ TEMPLATES = [
 DATABASES = {
 'default': {
         'ENGINE': 'django.db.backends.postgresql',  #we use 'postgresql' instead of 'sqlite3'
-        'NAME': 'pj3Ddb',
+        'NAME': 'projectdb',
         'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost'   #object, may need to add port no.
+        'PASSWORD': '123',
+        'HOST': 'localhost',   #object, may need to add port no.
+        'PORT': '5432',        #default port for postgresql
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
+        'ATOMIC_REQUESTS': True
 }
 }
 

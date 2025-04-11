@@ -15,124 +15,126 @@
 
 <!-- Breadcrumb -->
 <section id="bc" class="mt-3">
-    <div class="container">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="{% url 'index' %}"> <i class="fas fa-home"></i> Home</a>
-          </li>
-          <li class="breadcrumb-item active">Browse Courses</li>
-        </ol>
-      </nav>
-    </div>
-  </section>
-  
-  <!-- Courses -->
-  <section id="courses" class="py-4">
-    <div class="container">
-      <div class="row">
-        <!-- course 1 -->
-        {% if courses %} {% for course in courses %}
-        <div class="col-md-4 mb-4">
-          <div class="card course-preview">
-            <img class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" src="{{ course.photo_main.url }}" alt="" />
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}"> <i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="breadcrumb-item active">Browse Courses</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- Courses -->
+<section id="courses" class="py-4">
+  <div class="container">
+    <div class="row">
+      {% if courses %}
+      {% for course in courses %}
+      <div class="col-md-4 mb-4">
+        <div class="card course-preview h-100 shadow-sm hover-effect">
+          <div class="position-relative">
+            <img class="card-img-top" src="{{ course.photo_main.url }}" alt="{{ course.title }}" />
             <div class="card-img-overlay">
               <h2>
-                <span class="badge badge-secondary text-white"
+                <span class="badge badge-secondary text-white price-badge"
                   >${{course.coursefee | intcomma}}</span
                 >
               </h2>
             </div>
-            <div class="card-body">
-              <div class="course-heading text-center">
-                <h4 class="text-primary course-title">{{course.title | title}}</h4>
-                <p>
-                  <i class="fas fa-map-marker text-secondary"></i>
-                  {{course.topic}}
-                </p>
-              </div>
-              <hr />
-              {% comment %}
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-th-large"></i> Sqft: {{course.sqft | intcomma}}
-                </div>
-                <div class="col-6">
-                  <i class="fas fa-dumbbell"></i> ClubHouse: {{course.clubhouse}} 
-                </div>
-              </div>
-              {% endcomment %}
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-bed"></i> 班級人數: {{course.classsize}}
-                </div>
-                <div class="col-6">
-                  <i class="fas fa-bath"></i> 時長(小時): {{course.durationhr}}
-                </div>
-              </div>
-              <hr />
-              <div class="row py-2 text-secondary">
-                <div class="col-12">
-                  <i class="fas fa-user"></i> 導師: {{course.tutor | title}}
-                </div>
-              </div>
-              <div class="row text-secondary pb-2">
-                <div class="col-12">
-                  <i class="fas fa-clock"></i> 發佈日期: {{course.list_date | timesince}}
-                </div>
-              </div>
-              <hr />
-              <a href="{% url 'course' course.id %}" class="btn btn-primary btn-block"
-                >更多資訊</a
-              >
+          </div>
+          <div class="card-body d-flex flex-column">
+            <div class="course-heading text-center mb-3">
+              <h4 class="text-primary course-title">{{ course.title | title }}</h4>
+              <p class="mb-2">
+                <i class="fas fa-tags text-secondary"></i>
+                {{ course.topic }}
+              </p>
             </div>
+            <hr class="my-2"/>
+            <div class="row g-2 text-secondary">
+              <div class="col-6">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-users me-2 mr-2"></i>
+                  <span> 班級人數: {{ course.classsize }}</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-clock me-2 mr-2"></i>
+                  <span> 時長: {{ course.durationhr }}小時</span>
+                </div>
+              </div>
+            </div>
+            <hr class="my-2"/>
+            <div class="text-secondary">
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-user me-2 mr-2"></i>
+                <span> 導師: {{ course.tutor | title }}</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="fas fa-calendar-alt me-2 mr-2"></i>
+                <span> 發佈日期: {{ course.list_date | timesince }}</span>
+              </div>
+            </div>
+            <hr class="my-3"/>
+            <a href="{% url 'course' course.id %}" class="btn btn-primary mt-auto">
+              <i class="fas fa-info-circle me-1"></i> 更多資訊
+            </a>
           </div>
         </div>
-        {% endfor %} {% else %}
-        <div class="col-md-12">
-          <p>No Course Available</p>
-        </div>
-        {% endif %}
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <!--django pagination -->
-          {% if courses.has_other_pages %}  
-          <ul class="pagination">
+      {% endfor %}
+      {% else %}
+      <div class="col-12">
+        <div class="alert alert-info">
+          <i class="fas fa-info-circle me-2"></i>目前沒有課程
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="row">
+      <div class="col-md-12">
+        {% if courses.has_other_pages %}
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
             {% if courses.has_previous %}
             <li class="page-item">
-              <a href="?page={{courses.previous_page_number}}" class="page-link">&laquo;</a>
+              <a href="?page={{ courses.previous_page_number }}" class="page-link">&laquo;</a>
             </li>
             {% else %}
             <li class="page-item disabled">
-              <a class="page-link" href="#">&laquo;</a>
+              <span class="page-link">&laquo;</span>
             </li>
             {% endif %}
-            <!--for loop all the page number-->
+
             {% for i in courses.paginator.page_range %}
-            <!--if page number eq to current page then display the number and go nowhere-->
-            {% if courses.number == i %}
-            <li class="page-item active">
-              <a class="page-link">{{i}}</a>
+            <li class="page-item {% if courses.number == i %}active{% endif %}">
+              <a class="page-link" href="{% if courses.number != i %}?page={{ i }}{% else %}#{% endif %}">
+                {{ i }}
+              </a>
             </li>
-            {% else %}
-            <li class="page-item">
-              <a class="page-link" href="?page={{i}}">{{i}}</a>
-            </li>
-            {% endif %}
             {% endfor %}
+
             {% if courses.has_next %}
             <li class="page-item">
-              <a href="?page={{courses.next_page_number}}" class="page-link">&raquo;</a>
+              <a href="?page={{ courses.next_page_number }}" class="page-link">&raquo;</a>
             </li>
             {% else %}
             <li class="page-item disabled">
-              <a class="page-link" href="#">&raquo;</a>
+              <span class="page-link">&raquo;</span>
             </li>
             {% endif %}
           </ul>
-          {% endif %}
+        </nav>
+        {% endif %}
       </div>
     </div>
+  </div>
   </section>
-  {% endblock %}
+</section>
+{% endblock %}
