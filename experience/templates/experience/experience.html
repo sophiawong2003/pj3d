@@ -11,24 +11,21 @@
             <div class="timeline__event__icon">
                 <i class="{{ event.get_icon }}"></i>
             </div>
+            <div class="card flex-row">
             <div class="timeline__event__date">
                 <div class="timeline__event__date-text">
                     {{ event.event_date|date:"d-m-Y" }}
                 </div>
             </div>  
-            <div class="timeline__event__content">
-                {% comment %} {% if event.main_photo %}
-                <img src="{{ event.main_photo.url }}" alt="{{ event.title }}" class="timeline__event__date-img">
-                {% endif %}  {% endcomment %}
-                <div class="timeline__event__title">{{ event.title }}</div>
-                <div class="timeline__event__description">
-                    {{ event.description }}
-                </div>
-            </div>
+
+    <img class="card-img-left example-card-img-responsive" src="{{ event.main_photo.url }}" alt="{{ event.title }}" />
+    <div class="card-body">
+        <h4 class="card-title h5 h4-sm">{{ event.title }}</h4>
+        <p class="card-text">{{ event.description }}</p>
+    </div>
+</div>
         </div>
         {% endfor %}
     </div>
 </div>
 {% endblock %}
-
-
