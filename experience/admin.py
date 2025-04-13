@@ -27,6 +27,6 @@ class VideoAdmin(admin.ModelAdmin):
             'fields': ('title', 'description')
         }),
         ('Media', {
-            'fields': ('video_file',)
+            'fields': ('video_thumbnail', 'youtube_link')
         }),
     )
