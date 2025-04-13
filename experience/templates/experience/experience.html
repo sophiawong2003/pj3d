@@ -4,41 +4,42 @@
 {% block content %}
 <div class="container">
     <h2 class="text-center mb-5">A clean timeline design, with animated links</h2>
-    <div class="timeline">
-        {% for event in timeline_events %}
-        <div class="timeline__event animated fadeInUp timeline__event--{{ event.event_type }}"
-             style="--event-bg: {{ event.get_colors.bg }}; --event-text: {{ event.get_colors.text }}">
-            <div class="timeline__event__icon">
-                <i class="{{ event.get_icon }}"></i>
+<div class="timeline">
+    <div class="timeline__line"></div>
+    {% for event in timeline_events %}
+    <div class="timeline__event animated fadeInUp timeline__event--{{ event.event_type }}"
+         style="--event-bg: {{ event.get_colors.bg }}; --event-text: {{ event.get_colors.text }}">
+        <div class="timeline__event__icon">
+            <i class="{{ event.get_icon }}"></i>
+        </div>
+        <div class="timeline__event__date">
+            <div class="timeline__event__date-text">
+                {{ event.event_date|date:"d-m-Y" }}
             </div>
-            <div class="timeline__event__date">
-                <div class="timeline__event__date-text">
-                    {{ event.event_date|date:"d-m-Y" }}
+        </div>
+        <div class="timeline__event__content">
+            <div class="content-grid">
+                <div class="content-grid__media">
+                    {% if event.main_photo %}
+                    <img src="{{ event.main_photo.url }}" alt="{{ event.title }}" class="event_img">
+                    {% endif %}
                 </div>
-            </div>
-            <div class="timeline__event__content">
-                <div class="content-grid">
-                    <div class="content-grid__media">
-                        {% if event.main_photo %}
-                        <img src="{{ event.main_photo.url }}" alt="{{ event.title }}" class="event_img">
-                        {% endif %}
+                <div class="content-grid__text">
+                    <div class="timeline__event__title">{{ event.title }}</div>
+                    <div class="timeline__event__description">
+                        {{ event.description }}
                     </div>
-                    <div class="content-grid__text">
-                        <div class="timeline__event__title">{{ event.title }}</div>
-                        <div class="timeline__event__description">
-                            {{ event.description }}
-                        </div>
-                        {% if event.social_link %}
-                        <a href="{{ event.social_link }}" class="timeline__event__link" target="_blank">
-                            了解更多 <i class="fas fa-arrow-right"></i>
-                        </a>
-                        {% endif %}
-                    </div>
+                    {% if event.social_link %}
+                    <a href="{{ event.social_link }}" class="timeline__event__link" target="_blank">
+                        了解更多 <i class="fas fa-arrow-right"></i>
+                    </a>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
 </div>
 <style>
 /* Timeline Layout */
@@ -58,6 +59,8 @@
         --color4: #555ac0;
         --color5: #24b47e;
         --color6: #aff1b6;
+
+      
     }
     
     .timeline {
@@ -65,13 +68,24 @@
         flex-direction: column;
         margin: var(--margin) auto;
         position: relative;
+        --circle-connector-size: 20px;  /* New variable for connector size */
+    }
+    
+    .timeline__line {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 80%;
+        background: var(--line-color);
+        z-index: -1;
     }
     
     .timeline__event {
         margin-bottom: var(--spacing);
         position: relative;
         display: flex;
-        margin: var(--spacing) 0;
+        margin: calc(var(--spacing) * 2) 0;  /* Increase spacing between events */
         border-radius: var(--bdrs);
         align-self: center;
         width: 50vw;
@@ -117,7 +131,8 @@
         border-radius: 0 var(--bdrs) var(--bdrs) 0;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         height: 100%;  /* Maximize height */
-        display: flex;  /* Add flex display */
+        
+
     }
     
     .timeline__event__title {
@@ -129,7 +144,7 @@
         letter-spacing: 1.5px;
         margin-bottom: 10px;
     }
-    
+    border-radius: 5px;
     .timeline__event__description {
         color: #666;
         line-height: 1.6;
@@ -140,10 +155,12 @@
         grid-template-columns: minmax(200px, 1fr) 2fr;
         width: 100%;  /* Full width */
         height: 100%;  /* Full height */
+        border: 5px solid var(--event-bg);
+        background: #fff;
+        
     }
 
     .content-grid__media {
-        position: relative;
         overflow: hidden;
         height: 100%;  /* Full height */
         border-radius: 0;  /* Remove border radius */
@@ -183,6 +200,40 @@
         transform: translateX(5px);
     }
     
+    .timeline__event::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid var(--event-bg);
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0.9;
+        z-index: 2;
+    }
+
+    .timeline__event::after {
+        content: '';
+        position: absolute;
+        height: calc(100% + var(--spacing));
+        background: var(--event-bg);
+        opacity: 0.3;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline__event:nth-child(2n)::after {
+        right: calc(50% + var(--circle-connector-size)/2);
+    }
+
+    .timeline__event:nth-child(2n + 1)::after {
+        left: calc(50% + var(--circle-connector-size)/2);
+    }
+
     /* Alternating sides */
     .timeline__event:nth-child(2n + 1) {
         flex-direction: row-reverse;
@@ -245,6 +296,25 @@
         .content-grid__media img {
             height: 250px;
             border-radius: 0;  /* Remove border radius on mobile */
+        }
+
+        .timeline__event::before {
+            left: 20px;
+            transform: none;
+        }
+
+        .timeline__event::after {
+            left: 20px;
+            transform: none;
+        }
+
+        .timeline__line {
+            left: 20px;
+        }
+
+        .timeline__event:nth-child(2n)::after,
+        .timeline__event:nth-child(2n + 1)::after {
+            left: 26px;
         }
     }
     
