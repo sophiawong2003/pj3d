@@ -10,3 +10,7 @@ def experience_view(request):
 def making_video(request):
     videos = Video.objects.all()
     return render(request, 'experience/making_video.html', {'videos': videos})
+
+def event_detail(request, pk):
+    event = TimelineEvent.objects.get(pk=pk)
+    return render(request, 'experience/event_detail.html', {'event': event})

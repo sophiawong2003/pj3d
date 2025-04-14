@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
 <section class="py-5">
     <div class="container">
@@ -10,12 +11,16 @@
             <div class="col">
                 <div class="card h-100 shadow-sm">
                     <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/{{ video.video_id }}" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
+                        <iframe 
+                            src="https://www.youtube.com/embed/{{ video.youtube_link|cut:'https://www.youtube.com/watch?v=' }}" 
+                            title="{{ video.title }}" 
+                            style="border: 0;"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ video.timeline_event.title }}</h5>
+                        <h5 class="card-title">{{ video.title }}</h5>
                         <p class="card-text">{{ video.description }}</p>
                     </div>
                     <div class="card-footer bg-transparent">

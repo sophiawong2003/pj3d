@@ -64,24 +64,24 @@
         </div>
     </section>
 
-    <!-- Main Content -->
-    <div class="container py-5">
-        <div class="row g-4">
-            <div class="col-md-4 order-md-2">
-                <div class="sticky-top" style="top: 2rem;">
-                    <div class="card border-0 shadow-lg">
-                        <div class="card-body">
-                            <h5 class="card-title text-secondary"><i class="bi bi-calendar3 me-2"></i>活動日期</h5>
-                            <p class="fs-5">{{ event.event_date|date:"Y年m月d日" }}</p>
-                            {% if event.social_link %}
-                            <a href="{{ event.social_link }}" class="btn btn-danger w-100 mt-3" target="_blank">
-                                <i class="bi bi-link-45deg"></i> 官方連結
-                            </a>
-                            {% endif %}
-                        </div>
+<!-- Main Content -->
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-4 order-md-2">
+            <div class="sticky-top" style="top: 2rem;">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body">
+                        <h5 class="card-title text-secondary"><i class="bi bi-calendar3 me-2"></i>活動日期</h5>
+                        <p class="fs-5">{{ event.event_date|date:"Y年m月d日" }}</p>
+                        {% if event.social_link %}
+                        <a href="{{ event.social_link }}" class="btn btn-danger w-100 mt-3" target="_blank">
+                            <i class="bi bi-link-45deg"></i> 官方連結
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
+        </div>
 
             <div class="col-md-8 order-md-1">
                 <article class="article-content fs-5 lh-lg">

@@ -5,7 +5,8 @@ class Video(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     date_created = models.DateTimeField(default=timezone.now)
-    video_file = models.FileField(upload_to='experience/videos/')
+    video_thumbnail = models.ImageField(upload_to='experience/making_video/thumbnails/', blank=True, null=True)
+    youtube_link = models.URLField(max_length=500)
 
     def __str__(self):
         return self.title
@@ -15,9 +16,9 @@ class Video(models.Model):
 
 class TimelineEvent(models.Model):
     EVENT_TYPES = [
-        ('exhibition', 'Exhibition'),
-        ('competition', 'Competition'),
-        ('workshop', 'Workshop'),
+        ('exhibition', '展覽'),
+        ('competition', '比賽'),
+        ('workshop', '工作坊及作品製作'),
     ]
     event_type = models.CharField(max_length=50, choices=EVENT_TYPES, default='workshop')
     main_photo = models.ImageField(upload_to='experience/photos/main/',blank=True, null=True)
@@ -63,23 +64,6 @@ class TimelineEvent(models.Model):
         }
         return color_mapping.get(self.event_type, {'bg': 'var(--color1)', 'text': 'var(--color2)'})
 
-    def get_color(self):
-        """Returns the color scheme based on event type"""
-        color_mapping = {
-            'exhibition': {
-                'bg': 'var(--color1)',  # Purple
-                'text': 'var(--color2)', # Light purple
-            },
-            'competition': {
-                'bg': 'var(--color4)',   # Blue
-                'text': 'var(--color3)',  # Light blue
-            },
-            'workshop': {
-                'bg': 'var(--color5)',    # Green
-                'text': 'var(--color6)',   # Light green
-            }
-        }
-        return color_mapping.get(self.event_type, {'bg': '#6c757d', 'text': '#e9ecef'})
-
+  
     class Meta:
         ordering = ['event_date']
