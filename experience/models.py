@@ -5,8 +5,7 @@ class Video(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     date_created = models.DateTimeField(default=timezone.now)
-    video_thumbnail = models.ImageField(upload_to='experience/making_video/thumbnails/', blank=True, null=True)
-    youtube_link = models.URLField(max_length=500)
+    video_file = models.FileField(upload_to='experience/videos/')
 
     def __str__(self):
         return self.title
