@@ -25,7 +25,6 @@ from django.conf import settings
 urlpatterns = [
     path('', include('pages.urls')), 
     path('courses/', include('courses.urls')),
-
     path('experience/', include('experience.urls')),
     path('accounts/', include('accounts.urls')),
     path('contacts/', include('contacts.urls')),
