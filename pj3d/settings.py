@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',  #we use 'postgresql' instead of 'sqlite3'
         'NAME': 'pj3ddb',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': '123',
         'HOST': 'localhost',   #object, may need to add port no.
         'PORT': '5432',        #default port for postgresql
         'OPTIONS': {
