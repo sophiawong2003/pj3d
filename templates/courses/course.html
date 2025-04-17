@@ -17,10 +17,10 @@
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="{% url 'index' %}">Home</a>
+          <a href="{% url 'index' %}">主頁</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="{% url 'courses' %}">courses</a>
+          <a href="{% url 'courses' %}">課程</a>
         </li>
         <li class="breadcrumb-item active">{{course.title | title}}</li>
       </ol>
@@ -32,7 +32,7 @@
 <section id="course" class="py-4">
   <div class="container">
     <a href="{% url 'courses' %}" class="btn btn-light mb-4 shadow-sm">
-      <i class="fas fa-arrow-left mr-2"></i> Back To Courses
+      <i class="fas fa-arrow-left mr-2"></i> 回到課程
     </a>
     <div class="row">
       <div class="col-md-9">
@@ -42,72 +42,62 @@
             src="{{course.photo_main.url}}"
             alt="{{course.title}}"
             class="img-main img-fluid rounded shadow-sm"
-            style="width: 100%; height: 400px; object-fit: cover;"
+            style="width: 100%; height: 400px; object-fit: cover"
           />
-          <div class="position-absolute" style="top: 20px; right: 20px;">
+          <div class="position-absolute" style="top: 20px; right: 20px">
             <span class="text-white bg-primary p-2 rounded">
               ${{course.coursefee | intcomma}}
             </span>
           </div>
         </div>
-<!-- Replace the existing thumbnail section with this -->
-<div class="gallery-container mb-5">
-  <div class="card-gallery">
-    {% if course.photo_1 %}
-    <div class="gallery-card">
-      <a href="{{course.photo_1.url}}" data-lightbox="course-images">
-        <img src="{{course.photo_1.url}}" alt="Course image 1">
-        <div class="gallery-card__head">打造創新</div>
-      </a>
-    </div>
-    {% endif %}
-    
-    {% if course.photo_2 %}
-    <div class="gallery-card">
-      <a href="{{course.photo_2.url}}" data-lightbox="course-images">
-        <img src="{{course.photo_2.url}}" alt="Course image 2">
-        <div class="gallery-card__head">獨特魅力</div>
-      </a>
-    </div>
-    {% endif %}
-    
-    {% if course.photo_3 %}
-    <div class="gallery-card">
-      <a href="{{course.photo_3.url}}" data-lightbox="course-images">
-        <img src="{{course.photo_3.url}}" alt="Course image 3">
-        <div class="gallery-card__head">盡展想象力</div>
-      </a>
-    </div>
-    {% endif %}
-    
-    {% if course.photo_4 %}
-    <div class="gallery-card">
-      <a href="{{course.photo_4.url}}" data-lightbox="course-images">
-        <img src="{{course.photo_4.url}}" alt="Course image 4">
-        <div class="gallery-card__head">激發無限可能</div>
-      </a>
-    </div>
-    {% endif %}
-    
-    {% if course.photo_5 %}
-    <div class="gallery-card">
-      <a href="{{course.photo_5.url}}" data-lightbox="course-images">
-        <img src="{{course.photo_5.url}}" alt="Course image 5">
-        <div class="gallery-card__head">兌現創意</div>
-      </a>
-    </div>
-    {% endif %}
-
-    {% if course.photo_6 %}
-    <div class="gallery-card">
-      <a href="{{course.photo_6.url}}" data-lightbox="course-images">
-        <img src="{{course.photo_6.url}}" alt="Course image 6">
-        <div class="gallery-card__head">創科第一步</div>
-      </a>
-    </div>
-    {% endif %}
-  </div>
-</div>
+        <!-- Replace the existing thumbnail section with this -->
+        <div class="gallery-container mb-5">
+          <div class="card-gallery">
+            {% if course.photo_1 %}
+            <div class="gallery-card">
+              <a href="{{course.photo_1.url}}" data-lightbox="course-images">
+                <img src="{{course.photo_1.url}}" alt="Course image 1" />
+                <div class="gallery-card__head">打造創新</div>
+              </a>
+            </div>
+            {% endif %} {% if course.photo_2 %}
+            <div class="gallery-card">
+              <a href="{{course.photo_2.url}}" data-lightbox="course-images">
+                <img src="{{course.photo_2.url}}" alt="Course image 2" />
+                <div class="gallery-card__head">獨特魅力</div>
+              </a>
+            </div>
+            {% endif %} {% if course.photo_3 %}
+            <div class="gallery-card">
+              <a href="{{course.photo_3.url}}" data-lightbox="course-images">
+                <img src="{{course.photo_3.url}}" alt="Course image 3" />
+                <div class="gallery-card__head">盡展想象力</div>
+              </a>
+            </div>
+            {% endif %} {% if course.photo_4 %}
+            <div class="gallery-card">
+              <a href="{{course.photo_4.url}}" data-lightbox="course-images">
+                <img src="{{course.photo_4.url}}" alt="Course image 4" />
+                <div class="gallery-card__head">激發無限可能</div>
+              </a>
+            </div>
+            {% endif %} {% if course.photo_5 %}
+            <div class="gallery-card">
+              <a href="{{course.photo_5.url}}" data-lightbox="course-images">
+                <img src="{{course.photo_5.url}}" alt="Course image 5" />
+                <div class="gallery-card__head">兌現創意</div>
+              </a>
+            </div>
+            {% endif %} {% if course.photo_6 %}
+            <div class="gallery-card">
+              <a href="{{course.photo_6.url}}" data-lightbox="course-images">
+                <img src="{{course.photo_6.url}}" alt="Course image 6" />
+                <div class="gallery-card__head">創科第一步</div>
+              </a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
         <!-- Fields -->
         <div class="row mb-5 fields">
           <div class="col-md-6">
@@ -117,17 +107,20 @@
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-secondary">
-                  <div class="d-flex justify-content-between align-items-center">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
                     <div>
-                      <i class="fas fa-money-bill-alt mr-2 text-primary"></i> 課程費用:
+                      <i class="fas fa-money-bill-alt mr-2 text-primary"></i>
+                      課程費用:
                     </div>
-                    <span>
-                      ${{course.coursefee | intcomma}}</span
-                    >
+                    <span> ${{course.coursefee | intcomma}}</span>
                   </div>
                 </li>
                 <li class="list-group-item text-secondary">
-                  <div class="d-flex justify-content-between align-items-center">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
                     <div>
                       <i class="fas fa-users mr-2 text-primary"></i> 班級人數:
                     </div>
@@ -135,7 +128,9 @@
                   </div>
                 </li>
                 <li class="list-group-item text-secondary">
-                  <div class="d-flex justify-content-between align-items-center">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
                     <div>
                       <i class="fas fa-clock mr-2 text-primary"></i> 時長(小時):
                     </div>
@@ -152,15 +147,20 @@
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-secondary">
-                  <div class="d-flex justify-content-between align-items-center">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
                     <div>
-                      <i class="fas fa-calendar mr-2 text-primary"></i> 發佈日期:
+                      <i class="fas fa-calendar mr-2 text-primary"></i>
+                      發佈日期:
                     </div>
                     <span>{{course.list_date | timesince}}</span>
                   </div>
                 </li>
                 <li class="list-group-item text-secondary">
-                  <div class="d-flex justify-content-between align-items-center">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
                     <div>
                       <i class="fas fa-user mr-2 text-primary"></i> 導師:
                     </div>
@@ -168,7 +168,9 @@
                   </div>
                 </li>
                 <li class="list-group-item text-secondary">
-                  <div class="d-flex justify-content-between align-items-center">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
                     <div>
                       <i class="fas fa-tags mr-2 text-primary"></i> 主題:
                     </div>
@@ -187,9 +189,7 @@
               <div class="card-header bg-primary text-white">
                 <h5 class="mb-0">課程描述</h5>
               </div>
-              <div class="card-body">
-                {{course.description}}
-              </div>
+              <div class="card-body">{{course.description}}</div>
             </div>
           </div>
         </div>
@@ -200,11 +200,12 @@
             class="card-img-top"
             src="{{course.tutor.photo.url}}"
             alt="{{course.tutor.name}}"
-            style="height: 250px; object-fit: cover;"
+            style="height: 250px; object-fit: cover"
           />
           <div class="card-body text-center">
             <h5 class="card-title text-primary">課程導師</h5>
             <h6 class="text-secondary mb-3">{{course.tutor.name}}</h6>
+            {% comment %}
             <div class="d-flex justify-content-center">
               <a href="#" class="btn btn-outline-primary btn-sm mr-2">
                 <i class="fas fa-envelope"></i> 聯絡
@@ -213,6 +214,7 @@
                 <i class="fas fa-info-circle"></i> 詳情
               </a>
             </div>
+            {% endcomment %}
           </div>
         </div>
 
@@ -221,7 +223,7 @@
           data-toggle="modal"
           data-target="#inquiryModal"
         >
-          Make An Inquiry
+          查詢詳情
         </button>
       </div>
     </div>
@@ -233,7 +235,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="inquiryModalLabel">Make An Inquiry</h5>
+        <h5 class="modal-title" id="inquiryModalLabel">查詢詳情</h5>
         <button type="button" class="close" data-dismiss="modal">
           <span>&times;</span>
         </button>
@@ -254,7 +256,7 @@
             value="{{course.tutor.email}}"
           />
           <div class="form-group">
-            <label for="course_name" class="col-form-label">Course:</label>
+            <label for="course_name" class="col-form-label">課程:</label>
             <input
               type="text"
               name="course"
@@ -264,7 +266,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="name" class="col-form-label">Name:</label>
+            <label for="name" class="col-form-label">姓名:</label>
             {% if user.is_authenticated %}
             <input
               type="text"
@@ -278,7 +280,7 @@
             {% endif %}
           </div>
           <div class="form-group">
-            <label for="email" class="col-form-label">Email:</label>
+            <label for="email" class="col-form-label">電郵地址:</label>
             {% if user.is_authenticated %}
             <input
               type="email"
@@ -292,17 +294,17 @@
             {% endif %}
           </div>
           <div class="form-group">
-            <label for="phone" class="col-form-label">Phone:</label>
+            <label for="phone" class="col-form-label">聯絡電話:</label>
             <input type="text" name="phone" class="form-control" />
           </div>
           <div class="form-group">
-            <label for="message" class="col-form-label">Message:</label>
+            <label for="message" class="col-form-label">查詢事項:</label>
             <textarea name="message" class="form-control"></textarea>
           </div>
           <hr />
           <input
             type="submit"
-            value="Send"
+            value="送出"
             class="btn btn-block btn-secondary"
           />
         </form>

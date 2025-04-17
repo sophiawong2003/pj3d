@@ -3,10 +3,9 @@
   <div class="container">
     <div class="row text-center">
       <div class="col-md-12">
-        <h1 class="display-4">Browse Our Courses</h1>
+        <h1 class="display-4">瀏覽我們的課程</h1>
         <p class="lead">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt,
-          pariatur!
+          探索知識與技能的世界
         </p>
       </div>
     </div>
@@ -19,9 +18,9 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="{% url 'index' %}"> <i class="fas fa-home"></i> Home</a>
+          <a href="{% url 'index' %}"> <i class="fas fa-home"></i> 主頁正常</a>
         </li>
-        <li class="breadcrumb-item active">Browse Courses</li>
+        <li class="breadcrumb-item active">搜尋課程</li>
       </ol>
     </nav>
   </div>
@@ -80,7 +79,7 @@
               </div>
             </div>
             <hr class="my-3"/>
-            <a href="{% url 'course' course.id %}" class="btn btn-primary mt-auto">
+            <a href="{% url 'course' course.id %}" class="btn btn-primary btn-block mt-auto">
               <i class="fas fa-info-circle me-1"></i> 更多資訊
             </a>
           </div>

@@ -7,31 +7,31 @@
           <!-- Form Row 1 -->
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label class="sr-only">Keywords</label>
+              <label class="sr-only">關鍵字</label>
               <input
                 type="text"
                 name="keywords"
                 class="form-control"
-                placeholder="Keyword (Topic, Coursecode, etc)"
+                placeholder="關鍵字 (課程主題, 課程編號, 等等)"
                 value="{{values.keywords}}"
               />
             </div>
 
             <div class="col-md-4 mb-3">
-              <label class="sr-only">Title</label>
+              <label class="sr-only">課程名稱</label>
               <input
                 type="text"
-                name="title"
+                name="課程名稱"
                 class="form-control"
-                placeholder="Title"
+                placeholder="課程名稱"
                 value="{{values.title}}"
               />
             </div>
 
             <div class="col-md-4 mb-3">
-              <label class="sr-only">Topic</label>
+              <label class="sr-only">課程主題</label>
               <select name="topic" class="form-control">
-                <option {% if not values.topic %} selected="true" {% endif %} value=""> Topics (All)</option>
+                <option {% if not values.topic %} selected="true" {% endif %} value=""> 課程主題 (任何)</option>
                 {% for key, value in topic_choices.items %}
                 <option 
                   {% if key == values.topic %} selected {% endif %} value="{{key}}">{{value}}</option>
@@ -42,10 +42,10 @@
           <!-- Form Row 2 -->
           <div class="form-row">
             <div class="col-md-6 mb-3">
-              <label class="sr-only">Durations</label>
+              <label class="sr-only">課程時數</label>
               <select name="durations" class="form-control">
                 <option {% if not values.durations %} selected="true" {% endif %} value="">
-                  Bedrooms (Any)
+                  時數 (任何)
                 </option>
                 {% for key, value in duration_choices.items %}
                 <option {% if values.durations == key %} selected {% endif %} value="{{key}}">{{value}}</option>
@@ -55,7 +55,7 @@
             <div class="col-md-6 mb-3">
               <select name="coursefee" class="form-control">
                 <option {% if not values.coursefee %} selected="true" {% endif %} value="">
-                  Max Coursefee (All)
+                  最高課程費用 (All)
                 </option>
                 {% for key, value in coursefee_choices.items %}
                 <option {% if values.coursefee == key %} selected {% endif %} value="{{key}}">{{value}}</option>
@@ -64,7 +64,7 @@
             </div>
           </div>
           <button class="btn btn-secondary btn-block mt-4" type="submit">
-            Submit form
+            提交表格
           </button>
         </form>
       </div>
@@ -78,12 +78,12 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="{% url 'index' %}"> <i class="fas fa-home"></i> Home</a>
+          <a href="{% url 'index' %}"> <i class="fas fa-home"></i> 主頁</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="{% url 'courses' %}">Browse Courses</a>
+          <a href="{% url 'courses' %}">瀏覽課程</a>
         </li>
-        <li class="breadcrumb-item active">Search Results</li>
+        <li class="breadcrumb-item active">搜尋結果</li>
       </ol>
     </nav>
   </div>
@@ -112,15 +112,10 @@
               </p>
             </div>
             <hr />
-            {% comment %} <div class="row py-2 text-secondary">
-              <div class="col-6">
-                <i class="fas fa-th-large"></i> Sqft: {{course.sqft | intcomma}}
-              </div>
-              <div class="col-6"><i class="fas fa-car"></i> ClubHouse: {{course.clubhouse}}</div>
-            </div> {% endcomment %}
+            
             <div class="row py-2 text-secondary">
-              <div class="col-6"><i class="fas fa-bed"></i> Class size: {{course.classsize}}</div>
-              {% comment %} <div class="col-6"><i class="fas fa-bath"></i> Bathrooms: {{course.bathrooms}}</div> {% endcomment %}
+              <div class="col-6"><i class="fas fa-bed"></i> 班級人數: {{course.classsize}}</div>
+              
             </div>
             <hr />
             <div class="row py-2 text-secondary">
@@ -130,8 +125,8 @@
               <div class="col-12"><i class="fas fa-clock"></i> {{course.list_date | timesince}}</div>
             </div>
             <hr />
-            <a href="{% url 'course' course.id %}" class="btn btn-primary btn-block"
-              >More Info</a
+            <a href="{% url 'course' course.id %}" class="btn btn-primary btn-block mt-auto"
+              >更多資料</a
             >
           </div>
         </div>
@@ -139,7 +134,7 @@
       {% endfor %}
       {% else %}
       <div class="col-6">
-        <p>No Result Found !</p>
+        <p>沒有搜尋結果 !</p>
       </div>
       {% endif %}
     </div>
