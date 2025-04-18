@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {% extends "base.html" %} {% load static %} {% block content %} {% comment %}
 <section id="showcase-inner" class="py-5 text-white">
   <div class="container">
@@ -374,3 +375,321 @@
   </body>
 </html>
 {% endblock %}
+=======
+{% extends "base.html" %} 
+{% load static %} 
+{% block content %}
+<section id="showcase-inner" class="py-5 text-white position-relative">
+  <div class="parallax-bg" style="background-image: url('{% static "img/about.jpg" %}');"></div>
+  <div class="overlay"></div>
+  <div class="container position-relative">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4 text-shadow">關於我們</h1>
+        <p class="lead text-shadow">我們提供工業級3D打印技術服務</p>
+      </div>
+    </div>
+  </div>
+</section>  
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}"><i class="fas fa-home"></i> 主頁</a>
+        </li>
+        <li class="breadcrumb-item active">關於我們</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+
+<section class="container my-5">
+  <div class="section-header text-center mb-5">
+    <h1 class="display-4 gradient-text">關於我們</h1>
+    <div class="decorative-line"></div>
+  </div>
+  <div class="about-section">
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <div class="image-hover-container">
+          <img src="https://picsum.photos/600/400?random=1" class="img-fluid rounded" alt="3D列印公司圖片">
+          <div class="image-hover-text">3D列印公司</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <p>我們是一間領先的3D列印公司，專注提供高質素的3D列印服務與教育課程。我們的使命是將3D列印技術的威力帶給企業與個人。</p>
+      </div>
+    </div>
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 order-md-2">
+        <div class="image-hover-container">
+          <img src="https://picsum.photos/600/400?random=2" class="img-fluid rounded" alt="3D列印課程">
+          <div class="image-hover-text">3D列印課程</div>
+        </div>
+      </div>
+      <div class="col-md-6 order-md-1">
+        <h2>我們的課程</h2>
+        <p>我們提供各種適合初學者與進階使用者的3D列印課程。課程內容由基本的3D建模到高級的列印技術都有覆蓋。無論你是愛好者或專業人士，我們的課程都可以幫你掌握3D列印技能。</p>
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="image-hover-container">
+          <img src="https://picsum.photos/600/400?random=3" class="img-fluid rounded" alt="3D列印商業服務">
+          <div class="image-hover-text">3D列印商業服務</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2>商業服務</h2>
+        <p>我們的商業服務包括快速原型製作、定制零件製造與產品設計。我們與各個行業的企業密切合作，提供創新的3D列印解決方案。無論你需要單一原型或大規模量產，我們都有足夠的專業知識與設備去應付你的需求。</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 服務 -->
+<section id="work" class="service-section text-white text-center py-5">
+  <div class="container">
+    <h2 class="display-4 mb-4">我們為您服務</h2>
+    <h4 class="mb-4">
+      我們以專業服務，用心為您解決問題！
+    </h4>
+    <div class="decorative-line light mb-4"></div>
+    <a href="{% url 'courses' %}" class="btn btn-outline-light btn-lg hover-effect">
+      查看我們的精選課程
+    </a>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="team-section py-5">
+  <div class="container">
+    <h2 class="text-center mb-5 display-4 fw-bold text-primary">核心團隊</h2>
+    <div class="row justify-content-center">
+      {% if tutors %}
+        {% for tutor in tutors %}
+        <div class="col-md-4 mb-4">
+          <div class="team-card">
+            <div class="image-container position-relative">
+              <img src="{{ tutor.photo.url }}" alt="{{ tutor.name }}" class="img-fluid">
+              <div class="social-overlay">
+                <div class="social-links">
+                  <!-- Add social links here if needed -->
+                  {% if tutor.linkedin %}
+                  <a
+                    href="{{ tutor.linkedin }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                  {% endif %} {% if tutor.facebook %}
+                  <a
+                    href="{{ tutor.facebook }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                  >
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                  {% endif %} {% if tutor.instagram %}
+                  <a
+                    href="{{ tutor.instagram }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                  >
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="card-body text-center mt-4">
+              <h3 class="h4 fw-bold mb-2">{{ tutor.name }}</h3>
+              <div class="tutor-bio">
+                <p class="text-secondary small">{{ tutor.description }}</p>
+              </div>
+              {% if tutor.is_mvp %}
+              <div class="mt-3">
+                <span class="badge bg-danger">
+                  <i class="fas fa-star me-2"></i>星級導師
+                </span>
+              </div>
+              {% endif %}
+              <hr>
+              <p><i class="fas fa-phone"></i> {{ tutor.phone }}</p>
+              <p><i class="fas fa-envelope-open"></i> {{ tutor.email }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-md-12">
+          <div class="alert alert-info text-center">
+            <h3>我們的團隊</h3>
+            <p class="lead">我們正在聘請導師！</p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gradient-text {
+    background: linear-gradient(45deg, #2193b0, #6dd5ed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  .decorative-line {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(45deg, #2193b0, #6dd5ed);
+    margin: 20px auto;
+    border-radius: 2px;
+  }
+
+  .decorative-line.light {
+    background: linear-gradient(45deg, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+  }
+
+  .content-box {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .service-section {
+    background: linear-gradient(45deg, #2193b0, #6dd5ed);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hover-effect {
+    transition: all 0.3s ease;
+  }
+
+  .hover-effect:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  
+  .team-card {
+    border: none;
+    background: transparent;
+    transition: all 0.5s ease;
+  }
+
+  .image-container {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    border-radius: 5%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .team-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .social-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(220, 53, 69, 0.4);
+    border-radius: 5%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .team-card:hover .social-overlay {
+    opacity: 1;
+  }
+
+  .team-card:hover img {
+    transform: scale(1.1);
+  }
+
+  .social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    color: #dc3545;
+    margin: 0 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .social-links a:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    .image-container {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+
+
+  .image-hover-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+  .image-hover-container img {
+    transition: all 0.5s ease;
+  }
+
+  .image-hover-container:hover img {
+    transform: scale(1.1);
+    filter: brightness(70%);
+  }
+
+  .image-hover-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .image-hover-container:hover .image-hover-text {
+    opacity: 1;
+  }
+</style>
+{% endblock %}
+>>>>>>> Stashed changes

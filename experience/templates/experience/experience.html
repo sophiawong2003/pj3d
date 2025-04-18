@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {% extends 'base.html' %}
 {% load static %}
 
@@ -340,3 +341,373 @@
 
 
 {% endblock %}
+=======
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="showcase-inner" class="py-5 text-white position-relative">
+  <div class="parallax-bg" style="background-image: url('{% static "img/about.jpg" %}');"></div>
+  <div class="overlay"></div>
+  <div class="container position-relative">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4 text-shadow">過往經驗</h1>
+        <p class="lead text-shadow">我們的活動是由我們的團隊和社團共同執行的，我們希望能夠讓大家在活動中得到更多的認識和體驗。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}"><i class="fas fa-home"></i>首頁</a>
+          </li>
+          <li class="breadcrumb-item active">過往經驗</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+
+<div class="container">
+<div class="timeline">
+    <div class="timeline__line"></div>
+    {% for event in timeline_events %}
+    <div class="timeline__event animated fadeInUp timeline__event--{{ event.event_type }}"
+         style="--event-bg: {{ event.get_colors.bg }}; --event-text: {{ event.get_colors.text }}">
+        <div class="timeline__event__icon">
+            <i class="{{ event.get_icon }}"></i>
+        </div>
+        <div class="timeline__event__date">
+            <div class="timeline__event__date-text">
+                {{ event.event_date|date:"d-m-Y" }}
+            </div>
+        </div>
+        <div class="timeline__event__content">
+            <div class="content-grid">
+                <div class="content-grid__media">
+                    {% if event.main_photo %}
+                    <img src="{{ event.main_photo.url }}" alt="{{ event.title }}" class="event_img">
+                    {% endif %}
+                </div>
+                <div class="content-grid__text">
+                    <div class="timeline__event__title">{{ event.title }}</div>
+                    <div class="timeline__event__description">
+                        {{ event.description }}
+                    </div>
+                    <a href="{% url 'experience:event_detail' event.id %}" class="timeline__event__link">
+                        更多詳情 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+<style>
+/* Timeline Layout */
+    :root {
+        --content-width: calc(40vw - 84px);
+        --margin: 20px;
+        --spacing: 20px;
+        --bdrs: 6px;
+        --circle-size: 40px;
+        --icon-size: 32px;
+        --bdrs-icon: 100%;
+        --line-color: #e88989;
+    
+        --color1: #9251ac;
+        --color2: #f6a4ec;
+        --color3: #87bbfe;
+        --color4: #555ac0;
+        --color5: #24b47e;
+        --color6: #aff1b6;
+        --circle-connector-size: 20px;  /* New variable for connector size */
+    }
+    
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        margin: var(--margin) auto;
+        position: relative;
+    }
+    
+    .timeline__line {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 100%;
+        background: var(--line-color);
+        z-index: 0;
+    }
+    
+    .timeline__event {
+        margin-bottom: var(--spacing);
+        position: relative;
+        display: flex;
+        margin: calc(var(--spacing) * 2) 0;  /* Increase spacing between events */
+        border-radius: var(--bdrs);
+        align-self: center;
+        width: 50vw;
+    }
+    
+    .timeline__event__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--event-text);
+        padding: var(--spacing);
+        align-self: center;
+        margin: 0 var(--spacing);
+        background: var(--event-bg);
+        border-radius: var(--bdrs-icon);
+        width: var(--circle-size);
+        height: var(--circle-size);
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .timeline__event__icon i {
+        font-size: var(--icon-size);
+    }
+    
+    .timeline__event__date {
+        color: var(--event-text);
+        font-size: 1.5rem;
+        font-weight: 600;
+        background: var(--event-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        padding: 0 var(--spacing);
+        border-radius: var(--bdrs) 0 0 var(--bdrs);
+    }
+    
+    .timeline__event__content {
+        padding: 0;  /* Remove padding */
+        background: #fff;
+        width: var(--content-width);
+        border-radius: 0 var(--bdrs) var(--bdrs) 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        height: 100%;  /* Maximize height */
+    }
+    
+    .timeline__event__title {
+        font-size: 1.2rem;
+        line-height: 1.4;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--event-bg);
+        letter-spacing: 1.5px;
+        margin-bottom: 10px;
+    }
+    border-radius: 5px;
+    .timeline__event__description {
+        color: #666;
+        line-height: 1.6;
+    }
+    
+    .content-grid {
+        display: grid;
+        grid-template-columns: minmax(200px, 1fr) 2fr;
+        width: 100%;  /* Full width */
+        height: 100%;  /* Full height */
+        border: 5px solid var(--event-bg);
+        background: #fff;
+    }
+
+    .content-grid__media {
+        overflow: hidden;
+        height: 100%;  /* Full height */
+        border-radius: 0;  /* Remove border radius */
+    }
+
+    .content-grid__media img {
+        width: 100%;
+        height: 100%;  /* Full height */
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .content-grid__media img:hover {
+        transform: scale(1.05);
+    }
+
+    .content-grid__text {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: var(--spacing);  /* Move padding here */
+    }
+
+    .timeline__event__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--event-bg);
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: auto;
+        transition: all 0.3s ease;
+    }
+
+    .timeline__event__link:hover {
+        opacity: 0.8;
+        transform: translateX(5px);
+    }
+    
+    .timeline__event::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid var(--event-bg);
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0.9;
+        z-index: 2;
+    }
+
+    .timeline__event::after {
+        content: '';
+        position: absolute;
+        opacity: 0;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline__event:nth-child(2n)::after {
+        right: calc(50% + var(--circle-connector-size)/2);
+    }
+
+    .timeline__event:nth-child(2n + 1)::after {
+        left: calc(50% + var(--circle-connector-size)/2);
+    }
+
+    /* Alternating sides */
+    .timeline__event:nth-child(2n + 1) {
+        flex-direction: row-reverse;
+    }
+    
+    .timeline__event:nth-child(2n + 1) .timeline__event__date {
+        border-radius: 0 var(--bdrs) var(--bdrs) 0;
+    }
+    
+    .timeline__event:nth-child(2n + 1) .timeline__event__content {
+        border-radius: var(--bdrs) 0 0 var(--bdrs);
+    }
+
+
+    /* Responsive design */
+    @media (max-width: 786px) {
+        .timeline__event {
+            flex-direction: column;
+            width: 100%;
+        }
+    
+        .timeline__event:nth-child(2n + 1) {
+            flex-direction: column;
+        }
+    
+        .timeline__event__content {
+            width: 100%;
+        }
+    
+        .timeline__event__icon {
+            margin-bottom: var(--spacing);
+        }
+    
+        .timeline__event__date {
+            border-radius: var(--bdrs);
+            margin-bottom: var(--spacing);
+        }
+    
+        .timeline__event:nth-child(2n + 1) .timeline__event__date {
+            border-radius: var(--bdrs);
+        }
+    
+        .timeline__event__content {
+            border-radius: var(--bdrs);
+        }
+    
+        .timeline__event:nth-child(2n + 1) .timeline__event__content {
+            border-radius: var(--bdrs);
+        }
+
+        .content-grid {
+            grid-template-columns: 1fr;
+            height: auto;  /* Auto height on mobile */
+        }
+        
+        .content-grid__media {
+            height: 250px;  /* Fixed height on mobile */
+            border-radius: 0;  /* Remove border radius on mobile */
+        }
+        
+        .content-grid__media img {
+            height: 250px;
+            border-radius: 0;  /* Remove border radius on mobile */
+        }
+
+        .timeline__event::before {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline__event::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline__line {
+            left: calc(50% - 2px);
+            transform: translateX(-50%);
+        }
+
+        .timeline__event:nth-child(2n)::after,
+        .timeline__event:nth-child(2n + 1)::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    
+    /* Animations */
+    .animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+    }
+    
+    .fadeInUp {
+        animation-name: fadeInUp;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translate3d(0, 40px, 0);
+        }
+        to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+
+</style>
+
+
+{% endblock %}
+>>>>>>> Stashed changes

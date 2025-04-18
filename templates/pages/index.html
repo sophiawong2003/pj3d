@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {% extends "base.html" %} {% load humanize %} {% block content %}
 <!-- Showcase -->
 <section id="showcase">
@@ -189,3 +190,191 @@
   </div>
 </section>
 {% endblock %}
+=======
+{% extends "base.html" %} {% load humanize %} {% block content %}
+<!-- Showcase -->
+<section id="showcase">
+  <div class="container text-center"  class="py-5 text-white position-relative">
+    
+    <div class="home-search p-5">
+      <div class="overlay p-5"></div>
+        <h1 class="display-4 mb-4 text-shadow">課程搜尋話咁易</h1>
+        <p class="lead">
+          幫助教育機構及學生輕鬆找到合適的學習課程，提供多樣選擇和便捷搜索功能，提升學習體驗
+        </p>
+        <div class="search">
+          <form action="{% url 'search' %}">
+            <!-- Form Row 1 -->
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">關鍵字</label>
+                <input
+                  type="text"
+                  name="keywords"
+                  class="form-control"
+                  placeholder="關鍵字 (課程主題，時數等等)"
+                />
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">課程名稱</label>
+                <input
+                  type="text"
+                  name="title"
+                  class="form-control"
+                  placeholder="課程名稱"
+                />
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">課程主題</label>
+                <select name="topic" class="form-control">
+                  <option selected="true" value="">課程主題 (全部)</option>
+                  {% for key, value in topic_choices.items %}
+                  <option value="{{key}}">{{value}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <!-- Form Row 2 -->
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label class="sr-only">班級人數</label>
+                <select name="classsize" class="form-control">
+                  <option selected="true" value="">班級人數(任何人數)</option>
+                  {% for key, value in classsize_choices.items %}
+                  <option value="{{key}}">{{value}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <select name="coursefee" class="form-control" id="type">
+                  <option selected="true" value="">課程費用 (任何費用)</option>
+                  {% for key, value in coursefee_choices.items %}
+                  <option value="{{key}}">{{value}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-block mt-4" type="submit">
+              提交表格
+            </button>
+          </form>
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- courses -->
+
+<section id="courses" class="py-5">
+  <div class="container">
+    <h3 class="text-center mb-3">最新課程</h3>
+    <div class="row">
+      <!-- course 1 -->
+      {% if courses %} {% for course in courses %}
+      <div class="col-md-4 mb-4">
+        <div class="card course-preview h-100 shadow-sm hover-effect">
+          <div class="position-relative">
+            <img
+              class="card-img-top img-fluid"
+              style="height: 200px; object-fit: cover"
+              src="{{course.photo_main.url}}"
+              alt="{{course.title}}"
+            />
+            <div class="card-img-overlay">
+              <h2>
+                <span class="badge badge-secondary text-white price-badge"
+                  >${{course.coursefee | intcomma}}</span
+                >
+              </h2>
+            </div>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <div class="course-heading text-center mb-3">
+              <h4 class="text-primary course-title">{{course.title}}</h4>
+              <p class="mb-2">
+                <i class="fas fa-tags text-secondary"></i>
+                {{course.topic}}
+              </p>
+            </div>
+            <hr class="my-2" />
+            <div class="row g-2 text-secondary">
+              <div class="col-6">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-users me-2 mr-2"></i>
+                  <span> 班級人數: {{course.classsize}}</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-clock me-2 mr-2"></i>
+                  <span> 時長: {{course.durationhr}}小時</span>
+                </div>
+              </div>
+            </div>
+            <hr class="my-2" />
+            <div class="text-secondary">
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-user me-2 mr-2"></i>
+                <span> 導師: {{course.tutor}}</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="fas fa-calendar-alt me-2 mr-2"></i>
+                <span> 發佈日期: {{course.list_date|timesince}}</span>
+              </div>
+            </div>
+            <hr class="my-3" />
+            <a
+              href="{% url 'course' course.id %}"
+              class="btn btn-primary btn-block mt-auto"
+            >
+              <i class="fas fa-info-circle me-1"></i> 更多資訊
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %} {% else %}
+      <div class="col-md-12">
+        <p>並無相關課程</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section id="services" class="py-5 bg-secondary text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-4">
+        <i class="fas fa-comment fa-4x mr-4"></i>
+        <hr />
+        <h3>科技和教育</h3>
+        <p>
+          Bustyle
+          是一間致力於科技和教育領域的公司。我們的使命是透過創新的科技解決方案和教育服務，促進人們的學習和發展，並推動社會的進步。我們的價值觀是追求卓越、創新和協作。同時，我們關注重塑創新，致力於研發和提供最新的科技解決方案，以推動教育事業和學習的改革。
+        </p>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-home fa-4x mr-4"></i>
+        <hr />
+        <h3>課程規劃及解決方案</h3>
+        <p>
+          在一個以科技驅動發展的世界，我們在多個領域推行研究和教育，包括3D設計及其應用、程式編碼、藝術創作、STEAM學習等。我們的產品和服務涉及多種行業、硬體設備、課程規劃和學與教解決方案。我們與各種業務的合作，包括中小學、社區中心、政府機構和非營利組織，幫助他們提供有效的教育及解決方案。
+        </p>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-suitcase fa-4x mr-4"></i>
+        <hr />
+        <h3>科技成果創意應用</h3>
+        <p>
+          我們注重重塑教育和科技創新，在行業內享有良好聲譽。我們與各種科技機構和合作夥伴建立了緊密的合作關係，不斷推進科技的前沿，並將最新的科技成果轉化為實際的教育方案和創意應用。Bustyle
+          致力於成為促進科技創新的教育企業，運用信息科技能力，教育新世代的年輕人，使其更具競爭力。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+>>>>>>> Stashed changes
