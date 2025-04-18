@@ -1,5 +1,8 @@
-{% extends 'base.html' %} {% load humanize %} {% block content %}
+{% extends 'base.html' %} {% load humanize %} {% load static %} }
+{% block content %}
 <section id="showcase-inner" class="py-5 text-white">
+  <div class="parallax-bg" style="background-image: url('{{course.photo_main.url}}');"></div>
+  <div class="overlay p-5"></div>
   <div class="container">
     <div class="row text-center">
       <div class="col-md-12">
@@ -17,10 +20,10 @@
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="{% url 'index' %}">Home</a>
+          <a href="{% url 'index' %}">主頁</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="{% url 'courses' %}">courses</a>
+          <a href="{% url 'courses' %}">特色課程</a>
         </li>
         <li class="breadcrumb-item active">{{course.title | title}}</li>
       </ol>
@@ -32,7 +35,7 @@
 <section id="course" class="py-4">
   <div class="container">
     <a href="{% url 'courses' %}" class="btn btn-light mb-4 shadow-sm">
-      <i class="fas fa-arrow-left mr-2"></i> Back To Courses
+      <i class="fas fa-arrow-left mr-2"></i> 返回
     </a>
     <div class="row">
       <div class="col-md-9">
@@ -206,23 +209,17 @@
             <h5 class="card-title text-primary">課程導師</h5>
             <h6 class="text-secondary mb-3">{{course.tutor.name}}</h6>
             <div class="d-flex justify-content-center">
-              <a href="#" class="btn btn-outline-primary btn-sm mr-2">
+
+
+              <a href="#" class="btn btn-outline-primary btn-sm mr-2" data-toggle="modal"
+              data-target="#inquiryModal">
                 <i class="fas fa-envelope"></i> 聯絡
-              </a>
-              <a href="#" class="btn btn-outline-secondary btn-sm">
-                <i class="fas fa-info-circle"></i> 詳情
+              </a>  
               </a>
             </div>
           </div>
         </div>
 
-        <button
-          class="btn-primary btn-block btn-lg"
-          data-toggle="modal"
-          data-target="#inquiryModal"
-        >
-          Make An Inquiry
-        </button>
       </div>
     </div>
   </div>
@@ -233,7 +230,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="inquiryModalLabel">Make An Inquiry</h5>
+        <h5 class="modal-title" id="inquiryModalLabel">查詢詳情</h5>
         <button type="button" class="close" data-dismiss="modal">
           <span>&times;</span>
         </button>
@@ -254,7 +251,7 @@
             value="{{course.tutor.email}}"
           />
           <div class="form-group">
-            <label for="course_name" class="col-form-label">Course:</label>
+            <label for="course_name" class="col-form-label">課程:</label>
             <input
               type="text"
               name="course"
@@ -264,7 +261,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="name" class="col-form-label">Name:</label>
+            <label for="name" class="col-form-label">姓名:</label>
             {% if user.is_authenticated %}
             <input
               type="text"
@@ -278,7 +275,7 @@
             {% endif %}
           </div>
           <div class="form-group">
-            <label for="email" class="col-form-label">Email:</label>
+            <label for="email" class="col-form-label">電郵地址:</label>
             {% if user.is_authenticated %}
             <input
               type="email"
@@ -292,17 +289,17 @@
             {% endif %}
           </div>
           <div class="form-group">
-            <label for="phone" class="col-form-label">Phone:</label>
+            <label for="phone" class="col-form-label">聯絡電話:</label>
             <input type="text" name="phone" class="form-control" />
           </div>
           <div class="form-group">
-            <label for="message" class="col-form-label">Message:</label>
+            <label for="message" class="col-form-label">查詢事項:</label>
             <textarea name="message" class="form-control"></textarea>
           </div>
           <hr />
           <input
             type="submit"
-            value="Send"
+            value="送出"
             class="btn btn-block btn-secondary"
           />
         </form>
