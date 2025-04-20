@@ -40,13 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'debug_toolbar', 
+    'debug_toolbar',
     'pages.apps.PagesConfig',
     'experience.apps.ExperienceConfig',
     'courses.apps.CoursesConfig',
     'tutors.apps.TutorsConfig',
     'accounts.apps.AccountsConfig',
     'contacts.apps.ContactsConfig',
+    'videos.apps.VideosConfig',
+
 ]
 
 MIDDLEWARE = [

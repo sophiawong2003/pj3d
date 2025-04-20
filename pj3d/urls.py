@@ -23,10 +23,11 @@ from django.conf import settings
 # path with greater chance to run earlier, reduce response time
 # 1st resources route to admin app, Django built in
 urlpatterns = [
-    path('', include('pages.urls')), 
+    path('', include('pages.urls')),
     path('courses/', include('courses.urls')),
     path('experience/', include('experience.urls')),
     path('accounts/', include('accounts.urls')),
     path('contacts/', include('contacts.urls')),
+    path('videos/', include('videos.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + debug_toolbar_urls() #only for testing, can be deleted after deploy
