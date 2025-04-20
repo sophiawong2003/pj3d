@@ -35,7 +35,7 @@ def video_player(request, pk):
     video.save()
     
     # Get related videos from the same category
-    related_videos = video.category.video_set.exclude(pk=pk).order_by('-created_at')[:5]
+    related_videos = video.category.video_set.exclude(pk=pk).order_by('-created_at')[:3]
     
     # Check if video is in user's favorites
     is_favorite = False

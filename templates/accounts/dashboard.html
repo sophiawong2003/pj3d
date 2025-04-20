@@ -3,13 +3,16 @@
 {% load humanize %}
 {% block content %}
 
-<section id="showcase-inner" class="py-5 text-white">
-  <div class="container">
+
+<!-- Hero Section -->
+<section id="showcase-inner" class="py-5 text-white position-relative">
+  <div class="parallax-bg" style="background-image: url('{% static "img/about.jpg" %}');"></div>
+  <div class="overlay"></div>
+  <div class="container position-relative">
     <div class="row text-center">
       <div class="col-md-12">
-        <h1 class="display-4">用戶儀表板</h1>
-        <p class="lead">管理您的帳戶</p>
-        {% include 'partials/_alert.html' %}
+        <h1 class="display-4 text-shadow">用戶儀表板</h1>
+        <p class="lead text-shadow">管理您的帳戶</p>
       </div>
     </div>
   </div>
