@@ -18,7 +18,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #10284e;
+  --primary: #5a0a88;
   --secondary: #30caa0;
   --success: #20c997;
   --info: #17a2b8;
@@ -1625,22 +1625,22 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #10284e;
-  border-color: #10284e; }
+  background-color: #66476388;
+  border-color: #701d5e; }
   .btn-primary:hover {
     color: #fff;
-    background-color: #09182e;
-    border-color: #071224; }
+    background-color: #2c1a5a88;
+    border-color: #701d5e; }
   .btn-primary:focus, .btn-primary.focus {
-    box-shadow: 0 0 0 0.2rem rgba(16, 40, 78, 0.5); }
+    box-shadow: 0 0 0 0.2rem rgba(94, 11, 114, 0.5); }
   .btn-primary.disabled, .btn-primary:disabled {
     color: #fff;
-    background-color: #10284e;
+    background-color: #66476388;
     border-color: #10284e; }
   .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
   .show > .btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #071224;
+    background-color: #5a305688;
     border-color: #050d19; }
     .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
     .show > .btn-primary.dropdown-toggle:focus {
@@ -1648,12 +1648,12 @@ fieldset:disabled a.btn {
 
 .btn-secondary {
   color: #212529;
-  background-color: #30caa0;
-  border-color: #30caa0; }
+  background-color: Thistle;
+  border-color: SlateBlue; }
   .btn-secondary:hover {
     color: #fff;
-    background-color: #29ab88;
-    border-color: #26a17f; }
+    background-color: SlateBlue;
+    border-color: Thistle; }
   .btn-secondary:focus, .btn-secondary.focus {
     box-shadow: 0 0 0 0.2rem rgba(48, 202, 160, 0.5); }
   .btn-secondary.disabled, .btn-secondary:disabled {
@@ -4278,15 +4278,15 @@ button.close {
   vertical-align: text-top !important; }
 
 .bg-primary {
-  background-color: #10284e !important; }
+  background-color: DarkSlateBlue !important; }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #071224 !important; }
+  background-color: LightSteelBlue !important; }
 
 .bg-secondary {
-  background-color: #30caa0 !important; }
+  background-color: MediumTurquoise !important; }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,

@@ -61,10 +61,9 @@
 .auth-form .form-group i {
   position: absolute;
   left: 10px;
-  top: 50%;
+  top: 70%;
   transform: translateY(-50%);
   color: #666;
-  pointer-events: none; /* 添加此行防止图标阻挡输入框点击 */
 }
 
 /* 按钮样式 */

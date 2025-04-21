@@ -20,7 +20,9 @@ def course(request, course_id):
     return render(request, 'courses/course.html', context)
 
 def search(request):
-    queryset_list = Course.objects.order_by('-list_date').filter(is_published=True)
+    queryset_list = Course.objects.select_related('tutor').order_by('-list_date').filter(is_published=True).only(
+        'id', 'title', 'coursecode', 'coursefee', 'classsize', 'photo_main', 'list_date', 'tutor__name'
+    )
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
         if keywords:
