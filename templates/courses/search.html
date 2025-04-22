@@ -64,7 +64,7 @@
             </div>
           </div>
           <button class="btn btn-secondary btn-block mt-4" type="submit">
-            提交表格
+            開始搜尋
           </button>
         </form>
       </div>
@@ -111,12 +111,15 @@
                 <i class="fas fa-map-marker text-secondary"></i> {{course.title}}
               </p>
             </div>
-            <hr />
-            
+            <hr />            
             <div class="row py-2 text-secondary">
-              <div class="col-6"><i class="fas fa-bed"></i> 班級人數: {{course.classsize}}</div>
-              
-            </div>
+              <div class="col-6">
+                <i class="fas fa-bed"></i> 班級人數: {{course.classsize}}
+              </div>
+              <div class="col-6">
+                <i class="fas fa-clock me-2 mr-2"></i> 時長: {{course.durationhr}} 小時
+              </div>
+            </div>                          
             <hr />
             <div class="row py-2 text-secondary">
               <div class="col-12"><i class="fas fa-user"></i> {{course.tutor}}</div>
@@ -125,9 +128,19 @@
               <div class="col-12"><i class="fas fa-clock"></i> {{course.list_date | timesince}}</div>
             </div>
             <hr />
-            <a href="{% url 'course' course.id %}" class="btn btn-primary btn-block mt-auto"
-              >更多資料</a
+            {% comment %} <div class="my-3" />
+            <a
+              href="{% url 'course' course.id %}"
+              class="btn btn-primary btn-block mt-auto"
             >
+              <i class="fas fa-info-circle me-1"></i> 更多資訊
+            </a>
+            </div> {% endcomment %}
+            <div class="mt-auto">
+              <a href="{% url 'course' course.id %}" class="btn btn-primary w-100">
+              更多資料
+              </a>
+            </div>
           </div>
         </div>
       </div>
