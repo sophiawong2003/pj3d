@@ -11,9 +11,16 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('csv_file', type=str, help='Path to the CSV file containing experience data')
+        parser.add_argument('--keep-existing', action='store_true', help='Keep existing data in database')
 
     def handle(self, *args, **kwargs):
         csv_file = kwargs['csv_file']
+        keep_existing = kwargs.get('keep-existing', False)
+
+        # Clean existing data unless --keep-existing flag is used
+        if not keep_existing:
+            TimelineEvent.objects.all().delete()
+            self.stdout.write(self.style.SUCCESS('Cleaned existing data from database.'))
 
         # Check if the CSV file exists
         if not os.path.isfile(csv_file):

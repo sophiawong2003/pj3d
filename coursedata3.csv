@@ -1,0 +1,11 @@
+tutor,title,coursecode,topic,coursefee,classsize,durationhr,description,studentreq,list_date,photo_main,photo_1,photo_2
+陳志豪,3D 列印入門工作坊（FDM 技術）,FDM001,高精度列印,$800,15,4,學習 FDM 原理、Cura 切片軟件操作及實物列印（贈送 PLA 耗材）,需自備電腦（Windows/macOS）,18/3/2025,signal002.jpeg,signal002.jpeg,signal002.jpeg
+李婉婷,Steam Workshop 模型上傳實戰,SW002,高精度列印,$1200,12,5.5,教學如何將 3D 模型上傳至 Steam Workshop，包含元數據優化與社群互動策略,需擁有 Steam 帳號及基本英文能力,25/3/2025,signal003.jpeg,signal003.jpeg,signal003.jpeg
+黃耀祖,蒸汽朋克機械建模（Blender）,SP003,蒸汽朋克設計,$1500,10,6,學習齒輪、蒸汽管等復古機械結構建模，並生成可列印的 STL 文件,建議先修 3D 建模基礎,1/4/2025,signal004.jpeg,signal004.jpeg,signal004.jpeg
+張慧琳,工業級樹脂列印實戰（SLA 技術）,SLA004,高精度列印,$2000,8,7,操作 Formlabs 3B 樹脂機，學習支撐結構設計與後處理（贈送樹脂材料）,需簽署安全協議,8/4/2025,signal005.jpeg,signal005.jpeg,signal005.jpeg
+吳俊傑,逆向工程與 3D 列印（Artec Leo 掃描儀）,RE005,硬件改造,$1800,12,6.5,使用 Artec Leo 進行實物掃描，並將點雲數據轉換為可編輯模型,需熟悉基本數據處理軟件,15/4/2025,signal002.jpeg,signal002.jpeg,signal002.jpeg
+吳俊傑,金屬 3D 列印入門（SLM 技術）,SLM006,金屬材料應用,$2500,6,8,學習金屬粉末床熔融技術，操作 Desktop Metal 機台（贈送不鏽鋼粉末）,需具備機械工程基礎,22/4/2025,signal003.jpeg,signal003.jpeg,signal003.jpeg
+陳志豪,Steam Deck 外殼客製化列印,SD007,硬件改造,$1000,15,4.5,下載 V 社官方 CAD 文件，學習支撐結構優化與多色列印技巧,需自備 Steam Deck 主機,29/4/2025,signal004.jpeg,signal004.jpeg,signal004.jpeg
+李婉婷,可動機械模型設計（Tinkercad）,MECH008,機械結構,$900,18,5,設計齒輪連桿機構，生成可列印的可動模型（附組裝教學手冊）,建議使用 Chrome 瀏覽器,6/5/2025,signal005.jpeg,signal005.jpeg,signal005.jpeg
+黃耀祖,生物相容性列印（醫療級材料）,BIO009,醫療應用,$3000,5,9,學習醫療級樹脂（如 Formlabs MED610）的列印參數調校與消毒流程,需提供醫療背景證明,13/5/2025,signal002.jpeg,signal002.jpeg,signal002.jpeg
+張慧琳,蒸汽朋克場景建模（Fusion 360）,SP010,場景設計,$1600,10,7.5,創建蒸汽朋克風格的城市場景，包含煙囪、飛船等複雜結構的組裝與列印策略,需安裝 Fusion 360 專業版,20/5/2025,signal003.jpeg,signal003.jpeg,signal003.jpeg
