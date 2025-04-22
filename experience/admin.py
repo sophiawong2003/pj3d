@@ -18,17 +18,3 @@ class TimelineEventAdmin(admin.ModelAdmin):
                       'photo_4', 'photo_5', 'photo_6', 'social_link')
         }),
     )
-
-@admin.register(Video)
-class VideoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'date_created')
-    search_fields = ('title', 'description')
-    ordering = ('-date_created',)
-    fieldsets = (
-        (None, {
-            'fields': ('title', 'description')
-        }),
-        ('Media', {
-            'fields': ('video_file',)
-        }),
-    )

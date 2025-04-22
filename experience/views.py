@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import TimelineEvent, Video
 
 def experience_view(request):
-    timeline_events = TimelineEvent.objects.all().order_by('event_date')
+    timeline_events = TimelineEvent.objects.all().order_by('-event_date')
     return render(request, 'experience/experience.html', {
         'timeline_events': timeline_events
     })

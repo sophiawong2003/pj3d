@@ -66,4 +66,4 @@ class TimelineEvent(models.Model):
 
   
     class Meta:
-        ordering = ['event_date']
+        ordering = ['-event_date']

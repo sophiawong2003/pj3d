@@ -38,8 +38,8 @@
       {% for course in courses %}
       <div class="col-md-4 mb-4">
         <div class="card course-preview h-100 shadow-sm hover-effect">
-          <div class="position-relative">
-            <img class="card-img-top" src="{{ course.photo_main.url }}" alt="{{ course.title }}" />
+          <div class="position-relative" style="height: 200px; overflow: hidden">
+            <img class="card-img-top" src="{{ course.photo_main.url }}" alt="{{ course.title }}" style="object-fit: cover; width: 100%" />
             <div class="card-img-overlay">
               <h2>
                 <span class="badge badge-secondary text-white price-badge"
