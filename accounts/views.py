@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from contacts.models import Contact
+from accounts.models import UserProfile
 # Create your views here.
 def register(request):
     if request.method == 'POST':
@@ -22,6 +23,7 @@ def register(request):
                 else:
                     user = User.objects.create_user(username=username,password=password, email=email,first_name=first_name,last_name=last_name)
                     user.save()
+                    UserProfile.objects.create(user=user)
                     messages.success(request,"You are now registered and can log in !")
                     return redirect('login')
         else:
@@ -52,7 +54,8 @@ def logout(request):
 
 def dashboard(request):
     user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
-    context = {'contacts': user_contacts}
+    favorite_videos = request.user.userprofile.favorites.all()
+    context = {'contacts': user_contacts, 'favorite_videos': favorite_videos}
     return render(request, 'accounts/dashboard.html', context)
 from django.shortcuts import render
 

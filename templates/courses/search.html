@@ -1,6 +1,9 @@
-{% extends 'base.html' %} {% load humanize %} {% block content %}
+{% extends 'base.html' %} {% load humanize %}{% load static %} 
+ {% block content %}
 <section id="showcase-inner" class="showcase-search text-white py-5">
-  <div class="container">
+  <div class="parallax-bg" style="background-image: url('{% static "img/showcase.jpg" %}');"></div>
+  <div class="overlay p-5"></div>
+  <div class="container py-5">
     <div class="row text-center">
       <div class="col-md-12">
         <form action="{% url 'search' %}">
@@ -63,8 +66,8 @@
               </select>
             </div>
           </div>
-          <button class="btn btn-secondary btn-block mt-4" type="submit">
-            開始搜尋
+          <button class="btn btn-secondary btn-block mb-4" type="submit">
+            提交表格
           </button>
         </form>
       </div>
@@ -90,57 +93,62 @@
 </section>
 
 <!-- courses -->
-<section id="courses" class="py-4">
+<section id="courses" class="py-1">
   <div class="container">
     <div class="row">
       <!-- course 1 -->
       {% if courses %}
       {% for course in courses %}
-      <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card course-preview">
-          <img class="card-img-top" src="{{course.photo_main.url}}" alt="" />
-          <div class="card-img-overlay">
-            <h2>
-              <span class="badge badge-secondary text-white">${{course.coursefee | intcomma}}</span>
-            </h2>
+      <div class="col-md-4 mb-4">
+        <div class="card course-preview h-100 shadow-sm hover-effect">
+          <div class="position-relative" style="height: 200px; overflow: hidden">
+            <img class="card-img-top" src="{{ course.photo_main.url }}" alt="{{ course.title }}" style="object-fit: cover; height: 100%; width: 100%" />
+            <div class="card-img-overlay">
+              <h2>
+                <span class="badge badge-secondary text-white price-badge"
+                  >${{course.coursefee | intcomma}}</span
+                >
+              </h2>
+            </div>
           </div>
-          <div class="card-body">
-            <div class="course-heading text-center">
-              <h4 class="text-primary">{{course.title}}</h4>
-              <p>
-                <i class="fas fa-map-marker text-secondary"></i> {{course.title}}
+          <div class="card-body d-flex flex-column">
+            <div class="course-heading text-center mb-3">
+              <h4 class="text-primary course-title">{{ course.title | title }}</h4>
+              <p class="mb-2">
+                <i class="fas fa-tags text-secondary"></i>
+                {{ course.topic }}
               </p>
             </div>
-            <hr />            
-            <div class="row py-2 text-secondary">
+            <hr class="my-2"/>
+            <div class="row g-2 text-secondary">
               <div class="col-6">
-                <i class="fas fa-bed"></i> 班級人數: {{course.classsize}}
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-users me-2 mr-2"></i>
+                  <span> 班級人數: {{ course.classsize }}</span>
+                </div>
               </div>
               <div class="col-6">
-                <i class="fas fa-clock me-2 mr-2"></i> 時長: {{course.durationhr}} 小時
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-clock me-2 mr-2"></i>
+                  <span> 時長: {{ course.durationhr }}小時</span>
+                </div>
               </div>
-            </div>                          
-            <hr />
-            <div class="row py-2 text-secondary">
-              <div class="col-12"><i class="fas fa-user"></i> {{course.tutor}}</div>
             </div>
-            <div class="row text-secondary pb-2">
-              <div class="col-12"><i class="fas fa-clock"></i> {{course.list_date | timesince}}</div>
+            <hr class="my-2"/>
+            <div class="text-secondary">
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-user me-2 mr-2"></i>
+                <span> 導師: {{ course.tutor | title }}</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="fas fa-calendar-alt me-2 mr-2"></i>
+                <span> 發佈日期: {{ course.list_date | timesince }}</span>
+              </div>
             </div>
-            <hr />
-            {% comment %} <div class="my-3" />
-            <a
-              href="{% url 'course' course.id %}"
-              class="btn btn-primary btn-block mt-auto"
-            >
+            <hr class="my-3"/>
+            <a href="{% url 'course' course.id %}" class="btn btn-primary btn-block mt-auto">
               <i class="fas fa-info-circle me-1"></i> 更多資訊
             </a>
-            </div> {% endcomment %}
-            <div class="mt-auto">
-              <a href="{% url 'course' course.id %}" class="btn btn-primary w-100">
-              更多資料
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -193,4 +201,5 @@
     </div>
   </div>
 </section>
+
 {% endblock %}

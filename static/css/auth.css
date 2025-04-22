@@ -1,0 +1,116 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://picsum.photos/1600/900');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.auth-wrapper {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-header h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.auth-header p {
+  color: #666;
+}
+
+/* 表單樣式 */
+.auth-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form .form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.auth-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.auth-form .form-group input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* 修改图标垂直居中 */
+.auth-form .form-group i {
+  position: absolute;
+  left: 10px;
+  top: 70%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+/* 按钮样式 */
+.auth-form button {
+  background-color: #2193b0;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.auth-form button:hover {
+  background-color: #1a758e;
+}
+
+.auth-form button:active {
+  background-color: #135a6d;
+}
+
+/* 表单底部样式 */
+.auth-form .form-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.auth-form .form-footer p {
+  color: #666;
+}
+
+.auth-form .form-footer a {
+  color: #2193b0;
+  text-decoration: none;
+}
+
+.auth-form .form-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+  .auth-container {
+    padding: 1rem;
+  }
+  .auth-wrapper {
+    padding: 1.5rem;
+  }
+}

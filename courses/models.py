@@ -5,6 +5,7 @@ from . choices import topic_choices
 
 # Create your models here.
 class Course(models.Model):
+    id = models.AutoField(primary_key=True)
     tutor = models.ForeignKey(Tutor, on_delete=models.DO_NOTHING, null=True, blank=True)
     title = models.CharField(max_length=200, default='')
     coursecode = models.CharField(max_length=200, default='')

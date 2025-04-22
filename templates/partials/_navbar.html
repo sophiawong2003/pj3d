@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-info sticky-top">
   <div class="container">
@@ -60,3 +61,69 @@
     </div>
   </div>
 </nav>
+=======
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-info sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      {% comment %} <img src="{% static 'img/logo.png' %}" class="logo" alt="" /> {% endcomment %}
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav">
+        <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %} >
+          <a class="nav-link" href="{% url 'index' %}"><i class="fas fa-home mr-1"></i>主頁</a>
+        </li>
+        <li {% if 'about' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+          <a class="nav-link" href="{% url 'about' %}"><i class="fas fa-info-circle mr-1"></i>關於我們</a>
+        </li>
+        <li {% if 'courses' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}> 
+          <a class="nav-link" href="{% url 'courses' %}"><i class="fas fa-book mr-1"></i>特色課程</a> 
+        </li>
+        <li {% if 'experience' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+          <a class="nav-link" href="{% url 'experience:experience' %}"><i class="fas fa-clipboard-list mr-1"></i>經驗</a>
+        </li>
+        <li {% if 'videos' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+          <a class="nav-link" href="{% url 'videos:video_list' %}"><i class="fas fa-video mr-1"></i>影片</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+        <li {% if 'dashboard' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+          <a href="{% url 'dashboard' %}" class="nav-link">歡迎 {{user.username}}(儀表板)</a>
+        </li>
+        <!--logout-->
+        <li class="nav-item mr-3">
+          <a href="javascript:{document.getElementById('logout').submit()}" class='nav-link'>
+          <i class="fas fa-sign-out-alt mr-1"></i>登出
+          </a>
+          <form action="{% url 'logout' %}" method="POST" id='logout'>
+            {% csrf_token %}
+            <input type='hidden' />
+          </form>
+        </li>
+        <!--end of logout-->
+        {% else %}
+        <li {% if 'register' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+          <a class="nav-link" href="{% url 'register' %}">
+            <i class="fas fa-user-plus mr-1"></i>註冊</a
+          >
+        </li>
+        <li {% if 'login' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+          <a class="nav-link" href="{% url 'login' %}">
+            <i class="fas fa-sign-in-alt mr-1"></i>登入</a
+          >
+        </li>
+         {% endif %}
+      </ul> 
+    </div>
+  </div>
+</nav>
+>>>>>>> c5eaa20b30d9c9fd20f13de7853ac7972e8486de

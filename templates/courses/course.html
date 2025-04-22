@@ -1,5 +1,81 @@
-{% extends 'base.html' %} {% load humanize %} {% block content %}
+{% extends 'base.html' %} {% load humanize %} {% load static %} }
+{% block content %}
+<style>
+  .card-header.bg-primary {
+      background-color: #6986e6 !important; /* New purple primary color */
+  }
+
+  .gallery-container {
+      transform: skew(5deg);
+      margin: 10vmin;
+      overflow: hidden;
+  }
+
+  .card-gallery {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .gallery-card {
+      flex: 1;
+      transition: all 1s ease-in-out;
+      height: 75vmin;
+      position: relative;
+      margin-right: 1em;
+      overflow: hidden;
+  }
+
+  .gallery-card:last-child {
+      margin-right: 0 !important;
+  }
+
+  .gallery-card__head {
+      color: rgb(170, 120, 120);
+      background: rgba(40, 1, 15, 0.75);
+      padding: 0.5em;
+      transform: rotate(-90deg);
+      transform-origin: 0% 0%;
+      transition: all 0.5s ease-in-out;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      white-space: nowrap;
+      width: 100%;
+      text-align: center;
+      font-size: 1em;
+      z-index: 2;
+  }
+
+  .gallery-card:hover {
+      flex-grow: 10;
+  }
+
+  .gallery-card:hover img {
+      filter: grayscale(0);
+  }
+
+  .gallery-card:hover .gallery-card__head {
+      top: calc(100% - 2em);
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      font-size: 2em;
+      transform: rotate(0deg) skew(-5deg);
+  }
+
+  .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 1s ease-in-out;
+      filter: grayscale(100%);
+      position: relative;
+      z-index: 1;
+  }
+</style>
 <section id="showcase-inner" class="py-5 text-white">
+  <div class="parallax-bg" style="background-image: url('{{course.photo_main.url}}');"></div>
+  <div class="overlay p-5"></div>
   <div class="container">
     <div class="row text-center">
       <div class="col-md-12">
@@ -20,7 +96,7 @@
           <a href="{% url 'index' %}">主頁</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="{% url 'courses' %}">課程</a>
+          <a href="{% url 'courses' %}">特色課程</a>
         </li>
         <li class="breadcrumb-item active">{{course.title | title}}</li>
       </ol>
@@ -32,7 +108,7 @@
 <section id="course" class="py-4">
   <div class="container">
     <a href="{% url 'courses' %}" class="btn btn-light mb-4 shadow-sm">
-      <i class="fas fa-arrow-left mr-2"></i> 回到課程
+      <i class="fas fa-arrow-left mr-2"></i> 返回
     </a>
     <div class="row">
       <div class="col-md-9">
@@ -42,62 +118,17 @@
             src="{{course.photo_main.url}}"
             alt="{{course.title}}"
             class="img-main img-fluid rounded shadow-sm"
-            style="width: 100%; height: 400px; object-fit: cover"
+            style="width: 100%; height: 400px; object-fit: cover;"
           />
-          <div class="position-absolute" style="top: 20px; right: 20px">
+          <div class="position-absolute" style="top: 20px; right: 20px;">
             <span class="text-white bg-primary p-2 rounded">
               ${{course.coursefee | intcomma}}
             </span>
           </div>
         </div>
-        <!-- Replace the existing thumbnail section with this -->
-        <div class="gallery-container mb-5">
-          <div class="card-gallery">
-            {% if course.photo_1 %}
-            <div class="gallery-card">
-              <a href="{{course.photo_1.url}}" data-lightbox="course-images">
-                <img src="{{course.photo_1.url}}" alt="Course image 1" />
-                <div class="gallery-card__head">打造創新</div>
-              </a>
-            </div>
-            {% endif %} {% if course.photo_2 %}
-            <div class="gallery-card">
-              <a href="{{course.photo_2.url}}" data-lightbox="course-images">
-                <img src="{{course.photo_2.url}}" alt="Course image 2" />
-                <div class="gallery-card__head">獨特魅力</div>
-              </a>
-            </div>
-            {% endif %} {% if course.photo_3 %}
-            <div class="gallery-card">
-              <a href="{{course.photo_3.url}}" data-lightbox="course-images">
-                <img src="{{course.photo_3.url}}" alt="Course image 3" />
-                <div class="gallery-card__head">盡展想象力</div>
-              </a>
-            </div>
-            {% endif %} {% if course.photo_4 %}
-            <div class="gallery-card">
-              <a href="{{course.photo_4.url}}" data-lightbox="course-images">
-                <img src="{{course.photo_4.url}}" alt="Course image 4" />
-                <div class="gallery-card__head">激發無限可能</div>
-              </a>
-            </div>
-            {% endif %} {% if course.photo_5 %}
-            <div class="gallery-card">
-              <a href="{{course.photo_5.url}}" data-lightbox="course-images">
-                <img src="{{course.photo_5.url}}" alt="Course image 5" />
-                <div class="gallery-card__head">兌現創意</div>
-              </a>
-            </div>
-            {% endif %} {% if course.photo_6 %}
-            <div class="gallery-card">
-              <a href="{{course.photo_6.url}}" data-lightbox="course-images">
-                <img src="{{course.photo_6.url}}" alt="Course image 6" />
-                <div class="gallery-card__head">創科第一步</div>
-              </a>
-            </div>
-            {% endif %}
-          </div>
-        </div>
+
+
+
         <!-- Fields -->
         <div class="row mb-5 fields">
           <div class="col-md-6">
@@ -107,20 +138,17 @@
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-secondary">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
+                  <div class="d-flex justify-content-between align-items-center">
                     <div>
-                      <i class="fas fa-money-bill-alt mr-2 text-primary"></i>
-                      課程費用:
+                      <i class="fas fa-money-bill-alt mr-2 text-primary"></i> 課程費用:
                     </div>
-                    <span> ${{course.coursefee | intcomma}}</span>
+                    <span>
+                      ${{course.coursefee | intcomma}}</span
+                    >
                   </div>
                 </li>
                 <li class="list-group-item text-secondary">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
+                  <div class="d-flex justify-content-between align-items-center">
                     <div>
                       <i class="fas fa-users mr-2 text-primary"></i> 班級人數:
                     </div>
@@ -128,9 +156,7 @@
                   </div>
                 </li>
                 <li class="list-group-item text-secondary">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
+                  <div class="d-flex justify-content-between align-items-center">
                     <div>
                       <i class="fas fa-clock mr-2 text-primary"></i> 時長(小時):
                     </div>
@@ -147,20 +173,15 @@
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-secondary">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
+                  <div class="d-flex justify-content-between align-items-center">
                     <div>
-                      <i class="fas fa-calendar mr-2 text-primary"></i>
-                      發佈日期:
+                      <i class="fas fa-calendar mr-2 text-primary"></i> 發佈日期:
                     </div>
                     <span>{{course.list_date | timesince}}</span>
                   </div>
                 </li>
                 <li class="list-group-item text-secondary">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
+                  <div class="d-flex justify-content-between align-items-center">
                     <div>
                       <i class="fas fa-user mr-2 text-primary"></i> 導師:
                     </div>
@@ -168,9 +189,7 @@
                   </div>
                 </li>
                 <li class="list-group-item text-secondary">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
+                  <div class="d-flex justify-content-between align-items-center">
                     <div>
                       <i class="fas fa-tags mr-2 text-primary"></i> 主題:
                     </div>
@@ -189,7 +208,9 @@
               <div class="card-header bg-primary text-white">
                 <h5 class="mb-0">課程描述</h5>
               </div>
-              <div class="card-body">{{course.description}}</div>
+              <div class="card-body">
+                {{course.description}}
+              </div>
             </div>
           </div>
         </div>
@@ -200,33 +221,83 @@
             class="card-img-top"
             src="{{course.tutor.photo.url}}"
             alt="{{course.tutor.name}}"
-            style="height: 250px; object-fit: cover"
+            style="height: 250px; object-fit: cover;"
           />
           <div class="card-body text-center">
             <h5 class="card-title text-primary">課程導師</h5>
             <h6 class="text-secondary mb-3">{{course.tutor.name}}</h6>
-            {% comment %}
             <div class="d-flex justify-content-center">
-              <a href="#" class="btn btn-outline-primary btn-sm mr-2">
+
+
+              <a href="#" class="btn btn-outline-primary btn-sm mr-2" data-toggle="modal"
+              data-target="#inquiryModal">
                 <i class="fas fa-envelope"></i> 聯絡
-              </a>
-              <a href="#" class="btn btn-outline-secondary btn-sm">
-                <i class="fas fa-info-circle"></i> 詳情
+              </a>  
               </a>
             </div>
-            {% endcomment %}
           </div>
         </div>
 
-        <button
-          class="btn-primary btn-block btn-lg"
-          data-toggle="modal"
-          data-target="#inquiryModal"
-        >
-          查詢詳情
-        </button>
       </div>
     </div>
+  </div>
+</section>
+<!-- Gallery -->
+<section class="gallery-container mb-5">
+  <div class="card-gallery">
+    {% if course.photo_1 %}
+    <div class="gallery-card">
+      <a href="{{course.photo_1.url}}" data-lightbox="course-images">
+        <img src="{{course.photo_1.url}}" alt="Course image 1">
+        <div class="gallery-card__head">打造創新</div>
+      </a>
+    </div>
+    {% endif %}
+    
+    {% if course.photo_2 %}
+    <div class="gallery-card">
+      <a href="{{course.photo_2.url}}" data-lightbox="course-images">
+        <img src="{{course.photo_2.url}}" alt="Course image 2">
+        <div class="gallery-card__head">獨特魅力</div>
+      </a>
+    </div>
+    {% endif %}
+    
+    {% if course.photo_3 %}
+    <div class="gallery-card">
+      <a href="{{course.photo_3.url}}" data-lightbox="course-images">
+        <img src="{{course.photo_3.url}}" alt="Course image 3">
+        <div class="gallery-card__head">盡展想象力</div>
+      </a>
+    </div>
+    {% endif %}
+    
+    {% if course.photo_4 %}
+    <div class="gallery-card">
+      <a href="{{course.photo_4.url}}" data-lightbox="course-images">
+        <img src="{{course.photo_4.url}}" alt="Course image 4">
+        <div class="gallery-card__head">激發無限可能</div>
+      </a>
+    </div>
+    {% endif %}
+    
+    {% if course.photo_5 %}
+    <div class="gallery-card">
+      <a href="{{course.photo_5.url}}" data-lightbox="course-images">
+        <img src="{{course.photo_5.url}}" alt="Course image 5">
+        <div class="gallery-card__head">兌現創意</div>
+      </a>
+    </div>
+    {% endif %}
+
+    {% if course.photo_6 %}
+    <div class="gallery-card">
+      <a href="{{course.photo_6.url}}" data-lightbox="course-images">
+        <img src="{{course.photo_6.url}}" alt="Course image 6">
+        <div class="gallery-card__head">創科第一步</div>
+      </a>
+    </div>
+    {% endif %}
   </div>
 </section>
 
@@ -312,4 +383,6 @@
     </div>
   </div>
 </div>
+
+
 {% endblock %}

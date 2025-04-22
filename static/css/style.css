@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .btn-secondary {
   color: #fff !important;
 }
@@ -108,6 +109,8 @@ img {
   min-width: 20px;
   text-align: center;
 }
+=======
+>>>>>>> c5eaa20b30d9c9fd20f13de7853ac7972e8486de
 
 #showcase {
   background-image: url(../img/showcase.jpg);
@@ -147,7 +150,11 @@ img {
   left: 0;
   min-height: 100%;
   width: 100%;
+<<<<<<< HEAD
   background: rgba(91, 32, 134, 0.8);
+=======
+  background: rgba(32, 134, 107, 0.8);
+>>>>>>> c5eaa20b30d9c9fd20f13de7853ac7972e8486de
 }
 
 #showcase-inner {
@@ -164,7 +171,11 @@ img {
   left: 0;
   min-height: 100%;
   width: 100%;
+<<<<<<< HEAD
   background: rgba(134, 32, 112, 0.8);
+=======
+  background: rgba(32, 134, 107, 0.8);
+>>>>>>> c5eaa20b30d9c9fd20f13de7853ac7972e8486de
 }
 
 #showcase-inner.showcase-search {
@@ -218,6 +229,7 @@ img {
   }
 }
 
+<<<<<<< HEAD
 /* Timeline Styles */
 :root {
   --bs-primary: #9251ac;
@@ -225,6 +237,13 @@ img {
   --content-width: calc(40vw - 84px);
   --margin: 20px;
   --spacing: 20px;
+=======
+/* Timeline Variables */
+:root {
+  --content-width: calc(40vw - 84px);
+  --margin: 20px;
+  --spacing: 22px;
+>>>>>>> c5eaa20b30d9c9fd20f13de7853ac7972e8486de
   --bdrs: 6px;
   --circle-size: 40px;
   --icon-size: 32px;
@@ -236,8 +255,75 @@ img {
   --color5: #24b47e;
   --color6: #aff1b6;
   --box-shadow1: 0px 0px 18px 2px rgba(10, 55, 90, 0.15);
+<<<<<<< HEAD
 }
 
+=======
+  --line-color: #ddd;
+}
+
+.timeline__line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: var(--line-color);
+  z-index: -1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  background: #f6f9fc;
+  font-family: "Open Sans", sans-serif;
+  color: #525f7f;
+}
+
+#services::before {
+  background: rgba(91, 32, 134, 0.8);
+}
+
+#showcase-inner::before {
+  opacity: 0.2;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: -2;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+
+>>>>>>> c5eaa20b30d9c9fd20f13de7853ac7972e8486de
 .timeline {
   display: flex;
   flex-direction: column;
@@ -321,7 +407,10 @@ img {
 
 .timeline__event__icon i {
   font-size: var(--icon-size);
+<<<<<<< HEAD
 
+=======
+>>>>>>> c5eaa20b30d9c9fd20f13de7853ac7972e8486de
 }
 
 @media (max-width: 786px) {
@@ -342,13 +431,18 @@ img {
     color: var(--event-bg);
     background: var(--event-text);
   }
+<<<<<<< HEAD
 
 
 
+=======
+}
+>>>>>>> c5eaa20b30d9c9fd20f13de7853ac7972e8486de
 
 @keyframes fillLeft { 100% { right: 100%; } }
 @keyframes fillTop { 100% { top: 100%; } }
 @keyframes fillLeftOdd { 100% { left: 100%; } }
+<<<<<<< HEAD
 
 /*gallery*/
 
@@ -451,3 +545,5 @@ img {
     top: auto;
   }
 }
+=======
+>>>>>>> c5eaa20b30d9c9fd20f13de7853ac7972e8486de

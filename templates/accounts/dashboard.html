@@ -1,26 +1,32 @@
-{% extends "base.html" %} {% load humanize %} {% block content %}
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block content %}
 
-<section id="showcase-inner" class="py-5 text-white">
-  <div class="container">
+
+<!-- Hero Section -->
+<section id="showcase-inner" class="py-5 text-white position-relative">
+  <div class="parallax-bg" style="background-image: url('{% static "img/about.jpg" %}');"></div>
+  <div class="overlay"></div>
+  <div class="container position-relative">
     <div class="row text-center">
       <div class="col-md-12">
-        <h1 class="display-4">User Dashboard</h1>
-        <p class="lead">Manage your BC Real Estate account</p>
-        {% include 'partials/_alert.html' %}
+        <h1 class="display-4 text-shadow">用戶儀表板</h1>
+        <p class="lead text-shadow">管理您的帳戶</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Breadcrumb -->
+<!-- 麵包屑導覽 -->
 <section id="bc" class="mt-3">
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="{% url 'index' %}"> <i class="fas fa-home"></i> Home</a>
+          <a href="{% url 'index' %}"> <i class="fas fa-home"></i> 首頁</a>
         </li>
-        <li class="breadcrumb-item active">Dashboard</li>
+        <li class="breadcrumb-item active">儀表板</li>
       </ol>
     </nav>
   </div>
@@ -30,13 +36,13 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2>Welcome {{user.first_name | title}}</h2>
+        <h2>歡迎 {{user.first_name | title}}</h2>
         {% if contacts %}
-        <p>Here are the courses that you have inquired about</p>
+        <p>以下是您詢問的課程</p>
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">編號</th>
               <th scope="col">課程</th>
               <th></th>
             </tr>
@@ -50,12 +56,12 @@
                 <a
                   class="btn btn-info"
                   href="{% url 'course' contact.course_id %}"
-                  >View Course</a
+                  >查看課程詳情</a
                 >
                 <a
                   class="btn btn-danger"
                   href="{% url 'delete_contact' contact.id %}"
-                  >Delete Course</a
+                  >刪除課程</a
                 >
               </td>
             </tr>
@@ -63,8 +69,33 @@
           </tbody>
         </table>
         {% else %}
-        <p>You have no inquiry.</p>
+        <p>您目前沒有詢問記錄</p>
         {% endif %}
+
+        {% if favorite_videos %}
+        <h3 class="mt-5">收藏影片</h3>
+        <div class="row">
+          {% for video in favorite_videos %}
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <img src="https://img.youtube.com/vi/{{ video.get_youtube_id }}/maxresdefault.jpg" 
+                class="card-img-top" alt="{{ video.title }}">
+                <a href="https://www.youtube.com/watch?v={{ video.get_youtube_id }}" 
+                   class="card-title h5 d-block"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  {{ video.title }}
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p class="mt-5">您尚未添加任何影片到收藏</p>
+        {% endif %}
+        
       </div>
     </div>
   </div>

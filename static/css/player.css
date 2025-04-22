@@ -1,0 +1,142 @@
+/* Modern Video Player Styles */
+
+:root {
+  /* Theme Variables */
+  --player-primary-color: #007bff;
+  --player-background-color: rgba(30, 30, 30, 0.8);
+  --player-text-color: #ffffff;
+  --player-control-height: 40px;
+  --player-tooltip-bg: #333;
+  --player-tooltip-text: #fff;
+}
+
+.modern-player-container {
+  position: relative;
+  width: 100%;
+  background-color: #000;
+  overflow: hidden; /* Ensures controls stay within bounds */
+}
+
+.modern-player-container iframe {
+  display: block; /* Removes bottom space */
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.player-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--player-control-height);
+  background-color: var(--player-background-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari */
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 21; /* Ensure controls are above video */
+}
+
+.modern-player-container:not(:hover) .player-controls:not(:focus-within) {
+  /* Basic auto-hide logic - JS will enhance this */
+  /* opacity: 0; */ /* Temporarily disable for easier initial styling */
+}
+
+.control-button {
+  background: none;
+  border: none;
+  color: var(--player-text-color);
+  font-size: 1.2rem;
+  padding: 5px;
+  cursor: pointer;
+  position: relative; /* For tooltips */
+}
+
+.control-button:hover {
+  color: var(--player-primary-color);
+}
+
+/* Tooltip Base */
+.control-button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  background-color: var(--player-tooltip-bg);
+  color: var(--player-tooltip-text);
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  pointer-events: none; /* Prevent tooltip from blocking hover */
+}
+
+.control-button:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Volume Control Placeholder */
+.volume-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.volume-slider-vertical {
+  position: absolute;
+  bottom: calc(var(--player-control-height) + 10px); /* Position above controls */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 100px;
+  background-color: var(--player-tooltip-bg); /* Reuse tooltip bg */
+  border-radius: 5px;
+  padding: 10px 0;
+  display: none; /* Hidden by default */
+  flex-direction: column; /* Align items vertically */
+  align-items: center; /* Center the range input */
+  z-index: 22;
+}
+
+.volume-control:hover .volume-slider-vertical {
+  display: flex; /* Show on hover */
+}
+
+.volume-slider-vertical input[type="range"] {
+  writing-mode: bt-lr; /* IE/Edge */
+  -webkit-appearance: slider-vertical; /* WebKit */
+  appearance: slider-vertical; /* Standard */
+  width: 8px;
+  height: 80px;
+  cursor: pointer;
+}
+
+/* Video Info Overlay (Placeholder) */
+.video-info-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: var(--player-text-color);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 4px;
+  z-index: 20;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modern-player-container:not(:hover) .video-info-overlay {
+   /* Basic auto-hide logic - JS will enhance this */
+  /* opacity: 0; */
+}
+
+/* Add more specific styles for play/pause, progress bar, quality selector etc. */

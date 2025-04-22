@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid mt-3">
+  <div class="row gx-4">
+    <!-- 左側主影片區 -->
+    <div class="col-lg-8 py-3">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ video.get_youtube_id }}"  allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- 右側推薦影片側邊欄 -->
+    <div class="col-lg-4 mt-lg-0 mt-4">
+      <div class="card shadow-lg sticky-lg-top0" style="top: 1rem; border-left: 4px solid #0d6efd;">
+        <div class="card-header bg-transparent border-bottom py-3">
+          <div class="d-flex align-items-center">
+            <i class="bi bi-play-btn-fill me-2 text-primary fs-5"></i>
+            <h5 class="mb-0 fw-semibold">相關影片</h5>
+          </div>
+        </div>
+        <div class="card-body p-2 overflow-y-auto" style="max-height: 75vh;">
+          {% for vid in related_videos %}
+            <a href="{% url 'videos:video_player' vid.pk %}" class="text-decoration-none text-reset">
+              <div class="d-flex mb-3 p-2 rounded-2 hover-bg">
+                <div class="flex-shrink-0 ratio ratio-16x9" style="width: 45%;">
+                  <img 
+                    src="https://img.youtube.com/vi/{{ vid.get_youtube_id }}/mqdefault.jpg" 
+                    class="img-fluid rounded"
+                    alt="{{ vid.title }}"
+                    style="object-fit: cover; height: 100%;"
+                  >
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <h6 class="mb-1 fw-medium text-truncate-2">{{ vid.title }}</h6>
+                  <div class="d-flex align-items-center text-muted small">
+                    <span class="me-2">{{ vid.channel }}</span>
+                    <i class="bi bi-dot"></i>
+                    <span class="ms-2">{{ vid.duration }}</span>
+                  </div>
+                  <div class="text-primary small mt-1">
+                    <i class="bi bi-eye me-1"></i>
+                    {{ vid.views }} 次觀看
+                  </div>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card shadow-sm mb-4">
+        <div class="card-body p-4">
+          <h1 class="display-6 fw-bold mb-3">{{ video.title }}</h1>
+          
+          <!-- Updated Meta Info Section -->
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+  <span class="badge rounded-pill bg-light text-primary border border-primary me-2 mb-2 mb-md-0 px-3 py-1 small">
+    {{ video.category.name }}
+  </span>
+  <div class="d-flex align-items-center gap-2">
+    <div class="d-flex align-items-center text-muted small">
+      <i class="fas fa-eye me-1"></i>
+      <span>{{ video.views }} 次觀看</span>
+    </div>
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'videos:toggle_favorite' video.pk %}" class="d-inline">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-link p-0 text-danger hover-text-primary small">
+        <div class="d-flex align-items-center text-danger small">
+        <i class="{% if is_favorite %}fas{% else %}far{% endif %} fa-heart"></i>
+        <span>{% if is_favorite %}已收藏{% else %}收藏{% endif %}</span>
+      </div>
+      </button>
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+          <p class="text-secondary mb-4">{{ video.description }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+        <!-- Placeholder for potential future content -->
+    </div>
+  </div>
+</div>
+{% endblock %}

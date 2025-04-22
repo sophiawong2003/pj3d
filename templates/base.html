@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <!--lightbox-->
     <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}" />
+    <!--Login Css-->
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}" />
     <link
       rel="shortcut icon"
       href="{% static 'img/logo.png' %}"
@@ -23,6 +25,12 @@
     <title>Bustyle Tech Limited</title>
     <!-- Existing style sheet already included -->
   </head>
+
+
+
+
+
+
   <body>
     {% include 'partials/_topbar.html' %} {% include 'partials/_navbar.html' %}
     {% block content %} {% endblock %} {% include 'partials/_footer.html' %}

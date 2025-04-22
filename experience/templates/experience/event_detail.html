@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+    {% load static %}
+
+    {% block content %}
+        <style>
+            :root {
+                --gutter-space: 15px;
+                --image-radius: 12px;
+            }
+
+            .parallax-hero {
+                height: 60vh;
+                background-attachment: fixed;
+                background-position: center;
+                background-size: cover;
+            }
+            
+            .thumbs {
+                display: flex;
+                flex-wrap: wrap;
+                gap: var(--gutter-space);
+            }
+            
+            .thumbs > div {
+                flex: 0 0 calc(16.666% - var(--gutter-space));
+                aspect-ratio: 1/1;
+            }
+            
+            .thumbs img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: var(--image-radius);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .thumbs img:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            
+            @media (max-width: 768px) {
+                .thumbs > div {
+                    flex: 0 0 calc(50% - var(--gutter-space));
+                }
+            }
+
+
+
+
+        </style>
+
+    <!-- Hero Section -->
+    <section class="parallax-hero" style="background-image: url('{{ event.main_photo.url }}')">
+        <div class="container h-100 d-flex align-items-end ">
+            <div class="text-white mb-5" style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9); ">
+                <span class="badge bg-danger fs-5 mb-3">{{ event.get_event_type_display }}</span>
+                <h1 class="display-4 fw-bold">{{ event.title }}</h1>
+            </div>
+        </div>
+    </section>
+
+<!-- Main Content -->
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-4 order-md-2">
+            <div class="sticky-top" style="top: 2rem;">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body">
+                        <h5 class="card-title text-secondary"><i class="bi bi-calendar3 me-2"></i>活動日期</h5>
+                        <p class="fs-5">{{ event.event_date|date:"Y年m月d日" }}</p>
+                        {% if event.social_link %}
+                        <a href="{{ event.social_link }}" class="btn btn-danger w-100 mt-3" target="_blank">
+                            <i class="bi bi-link-45deg"></i> 官方連結
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="col-md-8 order-md-1">
+                <article class="article-content fs-5 lh-lg">
+                    {{ event.description|linebreaks }}
+                </article>
+
+            </div>        
+        <!-- Photo Grid -->
+         <div class="row mb-5 thumbs">
+        {% if event.photo_1 %}
+        <div class="col-md-2">
+        <a href="{{event.photo_1.url}}" data-lightbox="home-images">
+            <img src="{{event.photo_1.url}}" alt="" class="img-fluid" />
+        </a>
+        </div>
+        {% endif %} {% if event.photo_2 %}
+        <div class="col-md-2">
+        <a href="{{event.photo_2.url}}" data-lightbox="home-images">
+            <img src="{{event.photo_2.url}}" alt="" class="img-fluid" />
+        </a>
+        </div>
+        {% endif %} {% if event.photo_3 %}
+        <div class="col-md-2">
+        <a href="{{event.photo_3.url}}" data-lightbox="home-images">
+            <img src="{{event.photo_3.url}}" alt="" class="img-fluid" />
+        </a>
+        </div>
+        {% endif %} {% if event.photo_4 %}
+        <div class="col-md-2">
+        <a href="{{event.photo_4.url}}" data-lightbox="home-images">
+            <img src="{{event.photo_4.url}}" alt="" class="img-fluid" />
+        </a>
+        </div>
+        {% endif %} {% if event.photo_5 %}
+        <div class="col-md-2">
+        <a href="{{event.photo_5.url}}" data-lightbox="home-images">
+            <img src="{{event.photo_5.url}}" alt="" class="img-fluid" />
+        </a>
+        </div>
+        {% endif %} {% if event.photo_6 %}
+        <div class="col-md-2">
+        <a href="{{event.photo_6.url}}" data-lightbox="home-images">
+            <img src="{{event.photo_6.url}}" alt="" class="img-fluid" />
+        </a>
+        </div>
+        {% endif %}
+    </div>
+        </div>
+    </div>
+
+
+
+    {% endblock %}
+
