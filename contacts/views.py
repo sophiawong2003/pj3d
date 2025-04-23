@@ -26,7 +26,7 @@ def contact(request):
         send_mail(
             '3D Printer Course Inquiry',
             'There has been an inquiry for ' + course + '. Sign into the admin panel for more info',
-            'sophiawong2003@gmail.com',  # from admin email
+            'bustyle@pm.me',  # from admin email
             [tutor_email],  # to email
             fail_silently=False
         )
