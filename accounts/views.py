@@ -55,10 +55,11 @@ def logout(request):
 
 def dashboard(request):
     user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
-    favorite_videos = request.user.userprofile.favorites.all()
     
-    # Verify template loading
-    template = get_template('accounts/dashboard.html')
+    # Get or create UserProfile
+    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+    favorite_videos = user_profile.favorites.all()
+    
     context = {
         'contacts': user_contacts,
         'favorite_videos': favorite_videos
