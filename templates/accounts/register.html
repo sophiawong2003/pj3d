@@ -1,109 +1,70 @@
-<<<<<<< HEAD
 {% extends 'base.html' %} {% block content %}
-<section id="register" class="bg-light py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <div class="card">
-          <div class="card-header bg-primary text-white">
-            <h4><i class="fas fa-user-plus"></i> 註冊</h4>
-          </div>
-          <div class="card-body">
-            <!-- add alerts -->
-            {% include 'partials/_alert.html' %}
-            <form action="{% url 'register' %}" method="POST">
-              {% csrf_token %}
-              <div class="form-group">
-                <label for="first_name">名稱</label>
-                <input type="text" name="first_name" class="form-control" />
-              </div>
-              <div class="form-group">
-                <label for="last_name">姓氏</label>
-                <input type="text" name="last_name" class="form-control" />
-              </div>
-              <div class="form-group">
-                <label for="username">用戶名稱</label>
-                <input type="text" name="username" class="form-control" />
-              </div>
-              <div class="form-group">
-                <label for="email">電郵地址</label>
-                <input type="email" name="email" class="form-control" />
-              </div>
-              <div class="form-group">
-                <label for="password">密碼</label>
-                <input type="password" name="password" class="form-control" />
-              </div>
-              <div class="form-group">
-                <label for="password2">確認密碼</label>
-                <input type="password" name="password2" class="form-control" />
-              </div>
-              <input
-                type="submit"
-                value="註冊"
-                class="btn btn-secondary btn-block"
-              />
-            </form>
-          </div>
+
+<div class="auth-container">
+  <div class="auth-wrapper">
+    <div class="auth-split">
+      <div class="auth-form">
+        <div class="auth-header">
+          <h2><i class="fas fa-user-plus"></i> 註冊帳戶</h2>
+          <p>請填寫以下資訊以完成註冊</p>
         </div>
+        {% include 'partials/_alert.html' %}
+        <form action="{% url 'register' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="first_name">名字</label>
+            <i class="fas fa-signature"></i>
+            <input
+              type="text"
+              name="first_name"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="last_name">姓氏</label>
+            <i class="fas fa-signature"></i>
+            <input type="text" name="last_name" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="username">用戶名稱</label>
+            <i class="fas fa-user"></i>
+            <input type="text" name="username" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="email">電郵地址</label>
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="password">密碼</label>
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password2">確認密碼</label>
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              name="password2"
+              class="form-control"
+              required
+            />
+          </div>
+          <input
+            type="submit"
+            value="立即註冊"
+            class="btn btn-secondary btn-block"
+          />
+        </form>
       </div>
     </div>
   </div>
-</section>
-
-{% endblock content %}
-=======
-{% extends 'base.html' %}
-{% block content %}
-
-<div class="auth-container">
-    <div class="auth-wrapper">
-        <div class="auth-split">
-            <div class="auth-form">
-                <div class="auth-header">
-                    <h2><i class="fas fa-user-plus"></i> 註冊帳戶</h2>
-                    <p>請填寫以下資訊以完成註冊</p>
-                </div>
-                {% include 'partials/_alert.html' %}
-                <form action="{% url 'register' %}" method="POST">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="first_name">名字</label>
-                        <i class="fas fa-signature"></i>
-                        <input type="text" name="first_name" class="form-control" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="last_name">姓氏</label>
-                        <i class="fas fa-signature"></i>
-                        <input type="text" name="last_name" class="form-control" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="username">用戶名稱</label>
-                        <i class="fas fa-user"></i>
-                        <input type="text" name="username" class="form-control" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="email">電郵地址</label>
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" class="form-control" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="password">密碼</label>
-                        <i class="fas fa-lock"></i>
-                        <input type="password" name="password" class="form-control" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="password2">確認密碼</label>
-                        <i class="fas fa-lock"></i>
-                        <input type="password" name="password2" class="form-control" required />
-                    </div>
-                    <input type="submit" value="立即註冊" class="btn btn-secondary btn-block" />
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
 
-
-
 {% endblock content %}
->>>>>>> c5eaa20b30d9c9fd20f13de7853ac7972e8486de

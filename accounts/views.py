@@ -3,6 +3,7 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from contacts.models import Contact
 from accounts.models import UserProfile
+from django.template.loader import get_template
 # Create your views here.
 def register(request):
     if request.method == 'POST':
@@ -55,7 +56,13 @@ def logout(request):
 def dashboard(request):
     user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
     favorite_videos = request.user.userprofile.favorites.all()
-    context = {'contacts': user_contacts, 'favorite_videos': favorite_videos}
+    
+    # Verify template loading
+    template = get_template('accounts/dashboard.html')
+    context = {
+        'contacts': user_contacts,
+        'favorite_videos': favorite_videos
+    }
     return render(request, 'accounts/dashboard.html', context)
 from django.shortcuts import render
 

@@ -1,80 +1,48 @@
-<<<<<<< HEAD
-{% extends "base.html" %} {% block content %}
-<section id="login" class="bg-light py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <div class="card">
-          <div class="card-header bg-primary text-white">
-            <h4><i class="fas fa-sign-in-alt"></i> 登入</h4>
-          </div>
-          <div class="card-body">
-            {% include 'partials/_alert.html' %}
-            <form action="{% url 'login' %}" method="POST">
-              {% csrf_token %}
-              <div class="form-group">
-                <label for="username">用戶名稱</label>
-                <input type="text" name="username" class="form-control" />
-              </div>
-
-              <div class="form-group">
-                <label for="password2">密碼</label>
-                <input type="password" name="password" class="form-control" />
-              </div>
-
-              <input
-                type="submit"
-                value="登入"
-                class="btn btn-secondary btn-block"
-              />
-            </form>
-          </div>
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="auth-container">
+  <div class="auth-wrapper">
+    <div class="auth-split">
+      <div class="auth-form">
+        <div class="auth-header">
+          <h2><i class="fas fa-sign-in-alt"></i> 登入</h2>
+          <p>歡迎回來！請輸入您的帳號資訊</p>
         </div>
+        {% include 'partials/_alert.html' %}
+        <form action="{% url 'login' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="username">用戶名稱</label>
+            <i class="fas fa-user"></i>
+            <input
+              type="text"
+              name="username"
+              class="form-control"
+              placeholder="請輸入用戶名稱"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">密碼</label>
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              placeholder="請輸入密碼"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn-primary">登入</button>
+
+          <div class="form-footer">
+            <p>還沒有帳號？ <a href="{% url 'register' %}">立即註冊</a></p>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-</section>
-{% endblock content %}
-=======
-{% extends "base.html" %}
-{% load static %}
-
-
-{% block content %}
-<div class="auth-container">
-    <div class="auth-wrapper">
-        <div class="auth-split">
-            <div class="auth-form">
-                <div class="auth-header">
-                    <h2><i class="fas fa-sign-in-alt"></i> 登入</h2>
-                    <p>歡迎回來！請輸入您的帳號資訊</p>
-                </div>
-                {% include 'partials/_alert.html' %}
-                <form action="{% url 'login' %}" method="POST">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="username">用戶名稱</label>
-                        <i class="fas fa-user"></i>
-                        <input type="text" name="username" class="form-control" placeholder="請輸入用戶名稱" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">密碼</label>
-                        <i class="fas fa-lock"></i>
-                        <input type="password" name="password" class="form-control" placeholder="請輸入密碼" required />
-                    </div>
-
-                    <button type="submit" class="btn-primary">登入</button>
-
-                    <div class="form-footer">
-                        <p>還沒有帳號？ <a href="{% url 'register' %}">立即註冊</a></p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
 
-
 {% endblock %}
->>>>>>> c5eaa20b30d9c9fd20f13de7853ac7972e8486de
