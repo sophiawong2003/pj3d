@@ -1,6 +1,9 @@
 
 #showcase {
   background-image: url(../img/showcase.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
   position: relative;
   min-height: 650px;
   color: #fff;
